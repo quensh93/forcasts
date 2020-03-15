@@ -34,7 +34,7 @@
                 android:layout_marginBottom="@dimen/_2sdp"
                 android:gravity="left|center_vertical"
                 android:textSize="@dimen/_13sdp"
-                android:text="چهارشنبه 12 اسفند 1398"/>
+                today="@{true}"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -63,7 +63,7 @@
 
 
         <androidx.recyclerview.widget.RecyclerView
-            forcastData="@{viewModel.data}"
+            forecastAdapter="@{viewModel.forcastsAdapter}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
