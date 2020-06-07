@@ -4,19 +4,24 @@ import android.annotation.TargetApi;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.annotation.LayoutRes;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Toast;
+
+import androidx.annotation.LayoutRes;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
+import androidx.fragment.app.Fragment;
+
 import com.srp.carwash.utils.CommonUtils;
 import com.srp.carwash.utils.NetworkUtils;
+
 import java.util.ArrayList;
+
 import dagger.android.AndroidInjection;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -135,6 +140,7 @@ public abstract class BaseActivity<T extends ViewDataBinding, V extends BaseView
                 .replace(container, fragment, tag)
                 .commit();
     }
+
     @Override
     public void onBackPressed() {
         hideKeyboard();
@@ -144,6 +150,14 @@ public abstract class BaseActivity<T extends ViewDataBinding, V extends BaseView
             listFragment.remove(listFragment.size() - 1);
 
         super.onBackPressed();
+    }
+
+    public void showMessageToast(String message) {
+        Toast.makeText(this, "message", Toast.LENGTH_SHORT).show();
+    }
+
+    public void showMessageToast(int message) {
+        Toast.makeText(this, getString(message), Toast.LENGTH_SHORT).show();
     }
 }
 

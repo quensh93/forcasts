@@ -17,11 +17,8 @@
 package com.srp.carwash.utils;
 
 import android.content.Context;
-import androidx.databinding.BindingAdapter;
-import androidx.databinding.ObservableList;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Handler;
 import android.view.View;
@@ -29,16 +26,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.databinding.BindingAdapter;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.bumptech.glide.Glide;
 import com.srp.carwash.R;
-import com.srp.carwash.data.model.api.ForecastModel;
 import com.srp.carwash.ui.home.ForcastsAdapter;
 
 import java.util.Calendar;
-
-/**
- * Created by amitshekhar on 11/07/17.
- */
 
 public final class BindingUtils {
 
@@ -138,12 +133,17 @@ public final class BindingUtils {
         view.setText("");
     }
 
-    @BindingAdapter("forecastTimer")
-    public static void setForecastAdapter(TextView view, String startTime) {
-        timer(view,startTime);
+    @BindingAdapter("splashFont")
+    public static void setSplashFont(TextView view, boolean enable) {
+        view.setTypeface(Typeface.createFromAsset(view.getContext().getAssets(), "firstblood.ttf"));
     }
 
-    private static void timer(TextView view, String startTime){
+    @BindingAdapter("forecastTimer")
+    public static void setForecastAdapter(TextView view, String startTime) {
+        timer(view, startTime);
+    }
+
+    private static void timer(TextView view, String startTime) {
         //bug dare
         new Handler().postDelayed(() -> {
             Calendar calendar = Calendar.getInstance();

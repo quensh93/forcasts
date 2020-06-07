@@ -29,6 +29,7 @@ import com.srp.carwash.R;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -52,12 +53,12 @@ public final class CommonUtils {
         return new SimpleDateFormat(AppConstants.TIMESTAMP_FORMAT, Locale.US).format(new Date());
     }
 
-    public static boolean isEmailValid(String email) {
-        return Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    public static boolean isMobileValid(String mobile) {
+        return mobile != null && mobile.length() == 11 && Patterns.PHONE.matcher(mobile).matches();
     }
 
     public static boolean nullChecker(String text) {
-        return text!=null && text.length()>0;
+        return text != null && text.length() > 0;
     }
 
     public static String loadJSONFromAsset(Context context, String jsonFileName) throws IOException {
@@ -69,7 +70,7 @@ public final class CommonUtils {
         is.read(buffer);
         is.close();
 
-        return new String(buffer, "UTF-8");
+        return new String(buffer, StandardCharsets.UTF_8);
     }
 
     public static ProgressDialog showLoadingDialog(Context context) {

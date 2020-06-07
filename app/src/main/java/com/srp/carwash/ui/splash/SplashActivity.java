@@ -4,12 +4,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
 import com.srp.carwash.BR;
 import com.srp.carwash.R;
+import com.srp.carwash.data.model.api.User;
 import com.srp.carwash.databinding.ActivitySplashBinding;
 import com.srp.carwash.ui.base.BaseActivity;
 import com.srp.carwash.ui.login.LoginActivity;
 import com.srp.carwash.ui.main.MainActivity;
+
 import javax.inject.Inject;
 
 public class SplashActivity extends BaseActivity<ActivitySplashBinding, SplashViewModel> implements SplashNavigator {
@@ -36,9 +39,12 @@ public class SplashActivity extends BaseActivity<ActivitySplashBinding, SplashVi
         return mSplashViewModel;
     }
 
-    @Override
-    public void openMainActivity() {
-        startActivity(MainActivity.newIntent(SplashActivity.this));
+
+    private void decideNext() {
+        if (User.count(User.class) == 0)
+            startActivity(LoginActivity.newIntent(SplashActivity.this));
+        else
+            startActivity(MainActivity.newIntent(SplashActivity.this));
         finish();
     }
 
@@ -46,6 +52,6 @@ public class SplashActivity extends BaseActivity<ActivitySplashBinding, SplashVi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mSplashViewModel.setNavigator(this);
-        new Handler().postDelayed(this::openMainActivity,3000);
+        new Handler().postDelayed(this::decideNext, 3000);
     }
 }

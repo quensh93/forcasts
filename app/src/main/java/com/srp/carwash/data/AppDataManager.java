@@ -7,6 +7,8 @@ import com.google.gson.internal.$Gson$Types;
 import com.google.gson.reflect.TypeToken;
 import com.srp.carwash.data.local.db.DbHelper;
 import com.srp.carwash.data.local.prefs.PreferencesHelper;
+import com.srp.carwash.data.model.api.LoginRequest;
+import com.srp.carwash.data.model.api.VerifyRequest;
 import com.srp.carwash.data.model.db.Option;
 import com.srp.carwash.data.model.db.Question;
 import com.srp.carwash.data.model.db.User;
@@ -82,6 +84,16 @@ public class AppDataManager implements DataManager {
     @Override
     public Single<String> doGetMyOrder() throws Exception {
         return mApiHelper.doGetMyOrder();
+    }
+
+    @Override
+    public Single<String> doLogin(LoginRequest request) throws Exception {
+        return mApiHelper.doLogin(request);
+    }
+
+    @Override
+    public Single<String> doVerify(VerifyRequest request) throws Exception {
+        return mApiHelper.doVerify(request);
     }
 
 

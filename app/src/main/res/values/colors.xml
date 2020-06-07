@@ -9,4 +9,6 @@
     <color name="colorAccent3">#15FB19</color>
     <color name="black_effective">#00030A</color>
     <color name="light">#B1B0B0</color>
+    <color name="edittextbg">#222121</color>
+    <color name="white">#ffffff</color>
 </resources>

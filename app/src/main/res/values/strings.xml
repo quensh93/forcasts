@@ -1,24 +1,13 @@
-<!--
-  ~  Copyright (C) 2017 MINDORKS NEXTGEN PRIVATE LIMITED
-  ~
-  ~  Licensed under the Apache License, Version 2.0 (the "License");
-  ~  you may not use this file except in compliance with the License.
-  ~  You may obtain a copy of the License at
-  ~
-  ~      https://mindorks.com/license/apache-v2
-  ~
-  ~  Unless required by applicable law or agreed to in writing, software
-  ~  distributed under the License is distributed on an "AS IS" BASIS,
-  ~  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~  See the License for the specific language governing permissions and
-  ~  limitations under the License
-  -->
-
 <resources>
-    <string name="app_name">CarWash</string>
+    <string name="app_name">Forecast</string>
     <string name="SelectCarDialog_title">Select Your Car</string>
     <string name="about">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</string>
-
-
-
+    <string name="insert_mobile">تلفن همراه خود را وارد نمایید</string>
+    <string name="insert_code">کد پیامک شده برای تلفن همراه خود را وارد نمایید</string>
+    <string name="error_mobile">شماره همراه را به درستی وارد نمایید.</string>
+    <string name="error_code">کد وارد شده معتبر نمی باشد.</string>
+    <string name="login">ورود</string>
+    <string name="verify">تایید</string>
+    <string name="register">ثبت نام</string>
+    <string name="public_error">متاسفانه خطایی رخ داد</string>
 </resources>
