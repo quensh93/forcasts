@@ -8,6 +8,7 @@ import com.srp.carwash.BR;
 import com.srp.carwash.R;
 import com.srp.carwash.databinding.ActivityLoginBinding;
 import com.srp.carwash.ui.base.BaseActivity;
+import com.srp.carwash.ui.main.MainActivity;
 
 import javax.inject.Inject;
 
@@ -42,5 +43,52 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding, LoginViewM
         super.onCreate(savedInstanceState);
         mActivityLoginBinding = getViewDataBinding();
         loginViewModel.setNavigator(this);
+    }
+
+    @Override
+    public void onLogin() {
+        try {
+            loginViewModel.doCallLogin();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onVerify(String code) {
+        try {
+            loginViewModel.doCallVerify(code);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onRegister() {
+
+    }
+
+    @Override
+    public void openMain() {
+        startActivity(MainActivity.newIntent(LoginActivity.this));
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (loginViewModel.getStepValue() == 0)
+            super.onBackPressed();
+        else
+            loginViewModel.setStepValue(0);
+    }
+
+    @Override
+    public void showMessage(String message) {
+        showMessageToast(message);
+    }
+
+    @Override
+    public void showMessage(int message) {
+        showMessageToast(message);
     }
 }

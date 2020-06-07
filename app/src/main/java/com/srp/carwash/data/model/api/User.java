@@ -1,77 +1,61 @@
 package com.srp.carwash.data.model.api;
 
 import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+import com.orm.SugarRecord;
 
-import java.util.List;
+public class User extends SugarRecord {
 
-public class User {
-    private String id;
-    private String firstName;
-    private String lastName;
-    private String phoneNumber;
-    private String avatarUrl;
-    private String credit;
-    private List<Integer> carId;
+    @Expose
+    @SerializedName("uid")
+    private int uid;
 
-    public String getId() {
-        return id;
+    @Expose
+    @SerializedName("name")
+    private String name;
+
+    @Expose
+    @SerializedName("mobile")
+    private String mobile;
+
+    @Expose
+    @SerializedName("credit")
+    private int credit;
+
+    @Expose
+    @SerializedName("gender")
+    private int gender;
+
+    @Expose
+    @SerializedName("registeredAt")
+    private String registeredAt;
+
+    public User() {
+
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getAvatarUrl() {
-        return avatarUrl;
-    }
-
-    public void setAvatarUrl(String avatarUrl) {
-        this.avatarUrl = avatarUrl;
-    }
-
-    public String getCredit() {
+    public int getCredit() {
         return credit;
     }
 
-    public void setCredit(String credit) {
-        this.credit = credit;
+    public int getGender() {
+        return gender;
     }
 
-    public List<Integer> getCarId() {
-        return carId;
+    public int getUid() {
+        return uid;
     }
 
-    public void setCarId(List<Integer> carId) {
-        this.carId = carId;
+    public String getMobile() {
+        return mobile;
     }
 
-    public void addCar(int carId){
-        this.carId.add(carId);
+    public String getName() {
+        return name;
     }
 
+    public String getRegisteredAt() {
+        return registeredAt;
+    }
 
 }

@@ -31,13 +31,13 @@ android {
     }
     buildTypes {
         debug {
-            buildConfigField("String", "BASE_URL", "\"http://sajadrahmanipour.ir/api/v1/\"")
+            buildConfigField("String", "BASE_URL", "\"http://sajadrahmanipour.ir/forcasts/\"")
             buildConfigField("String", "API_KEY", "\"ABCXYZ123TEST\"")
         }
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField("String", "BASE_URL", "\"http://sajadrahmanipour.ir/api/v1/\"")
+            buildConfigField("String", "BASE_URL", "\"http://sajadrahmanipour.ir/forcasts/\"")
             buildConfigField("String", "API_KEY", "\"ABCXYZ123TEST\"")
         }
     }
@@ -123,9 +123,10 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.mikhaellopez:circularimageview:4.2.0'
     implementation 'com.codesgood:justifiedtextview:1.1.0'
-
+    implementation 'com.github.satyan:sugar:1.5'
     //Pick Car
      //implementation 'com.shawnlin:number-picker:2.4.7'
+
 
 
 }
