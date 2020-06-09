@@ -1,6 +1,10 @@
 package com.srp.carwash.ui.increase_credit;
 
-public interface IncreaseCreditFragmentCallback {
+import com.srp.carwash.ui.base.BaseNavigator;
 
-    void onBack();
+public interface IncreaseCreditFragmentCallback extends BaseNavigator {
+
+    void onIncrease();
+
+    void onOpenUrl();
 }

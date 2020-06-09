@@ -327,6 +327,7 @@
                                 android:layout_margin="@dimen/_4sdp"
                                 android:background="@drawable/bordershape"
                                 android:orientation="vertical"
+                                android:onClick="@{()-> viewModel.onIncreaseCredit()}"
                                 android:padding="@dimen/_3sdp"
                                 android:layoutDirection="ltr">
 

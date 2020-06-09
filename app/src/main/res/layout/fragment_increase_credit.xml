@@ -5,7 +5,7 @@
     tools:context="com.srp.carwash.ui.splash.SplashActivity">
 
     <data>
-
+        <import type="android.view.View" />
         <variable
             name="viewModel"
             type="com.srp.carwash.ui.increase_credit.IncreaseCreditFragmentViewModel" />
@@ -47,11 +47,180 @@
                 android:layout_marginBottom="@dimen/_3sdp"
                 android:layout_marginRight="@dimen/_20sdp"
                 android:layout_gravity="center"
-                app:srcCompat="@drawable/ic_arrow"/>
+                app:srcCompat="@drawable/ic_arrow" />
 
 
         </LinearLayout>
 
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.codesgood.views.JustifiedTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|center_vertical"
+                    android:layout_marginBottom="@dimen/_2sdp"
+                    android:gravity="right|center_vertical"
+                    android:lineSpacingExtra="@dimen/_2sdp"
+                    android:padding="@dimen/_7sdp"
+                    android:paddingRight="@dimen/_5sdp"
+                    android:text="@string/increase_credit"
+                    android:textSize="@dimen/_12sdp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/_2sdp"
+                    android:gravity="center"
+                    android:onClick="@{()-> viewModel.onUrlClicked()}"
+                    android:padding="@dimen/_7sdp"
+                    android:text="https://betforward.shop/"
+                    android:textColor="@color/colorAccent2"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_30sdp"
+                    android:layout_marginTop="@dimen/_7sdp"
+                    android:layout_marginRight="@dimen/_30sdp"
+                    android:layout_marginBottom="@dimen/_7sdp"
+                    app:cardBackgroundColor="@color/colorPrimaryDark2"
+                    app:cardCornerRadius="@dimen/_5sdp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingLeft="@dimen/_20sdp"
+                        android:paddingTop="@dimen/_10sdp"
+                        android:paddingRight="@dimen/_20sdp"
+                        android:paddingBottom="@dimen/_10sdp">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:padding="@dimen/_7sdp"
+                            android:text="کد شارژ خریداری شده را وارد نمایید"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_12sdp" />
+
+                        <com.srp.carwash.component.SmartEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left|center_horizontal"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:background="@color/edittextbg"
+                            android:gravity="left|center_horizontal"
+                            android:inputType="number"
+                            android:maxLength="10"
+                            android:maxLines="1"
+                            android:onTextChanged="@{viewModel::verifyVoucher}"
+                            android:padding="@dimen/_5sdp"
+                            android:text="@={viewModel.voucher}"
+                            android:textColor="@color/light"
+                            android:textColorHint="@color/light" />
+                        android:visibility="@{viewModel.step==1 ? View.VISIBLE : View.GONE}" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:gravity="center"
+                            android:text="کد شارژ وارد شده معتبر نمی باشد."
+                            android:textColor="@color/red"
+                            android:textSize="@dimen/_10ssp"
+                            android:visibility="@{viewModel.isError ? View.VISIBLE : View.INVISIBLE}" />
+
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginBottom="@dimen/_20sdp"
+                            android:onClick="@{()-> viewModel.onIncreaseClicked()}"
+                            app:cardBackgroundColor="@color/colorAccent2"
+                            app:cardCornerRadius="@dimen/_5sdp">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_centerVertical="true"
+                                    android:paddingLeft="@dimen/_40sdp"
+                                    android:paddingTop="@dimen/_7sdp"
+                                    android:paddingRight="@dimen/_40sdp"
+                                    android:paddingBottom="@dimen/_7sdp"
+                                    android:text="افزایش موجودی"
+                                    android:textColor="@color/white"
+                                    android:visibility="@{viewModel.loadingStatus ? View.INVISIBLE : View.VISIBLE}" />
+
+
+                                <ProgressBar
+                                    android:id="@+id/pbHeaderProgress"
+                                    style="?android:attr/progressBarStyleSmall"
+                                    android:layout_width="@dimen/_25sdp"
+                                    android:layout_height="@dimen/_25sdp"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_gravity="center"
+                                    android:theme="@style/ProgressBarTheme"
+                                    android:visibility="@{viewModel.loadingStatus ? View.VISIBLE : View.INVISIBLE}"></ProgressBar>
+
+                            </RelativeLayout>
+
+
+                        </androidx.cardview.widget.CardView>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    vouchersAdapter="@{viewModel.vouchersAdapter}"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:visibility="@{viewModel.data.size()==0 ? View.GONE : View.VISIBLE}"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:padding="@dimen/_30sdp"
+                    android:text="شما هنوز کدی خریداری نکرده اید."
+                    android:textColor="@color/white"
+                    android:visibility="@{viewModel.data.size()==0 ? View.VISIBLE : View.GONE}" />
+
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
     </LinearLayout>
 </layout>

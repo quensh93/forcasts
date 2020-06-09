@@ -9,6 +9,7 @@ import com.srp.carwash.databinding.FragmentProfileBinding;
 import com.srp.carwash.ui.about.AboutUsFragment;
 import com.srp.carwash.ui.base.BaseFragment;
 import com.srp.carwash.ui.contact.ContactUsFragment;
+import com.srp.carwash.ui.increase_credit.IncreaseCreditFragment;
 import com.srp.carwash.ui.reports.ReportsFragment;
 
 import javax.inject.Inject;
@@ -86,7 +87,7 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding, Profil
 
     @Override
     public void onIncreaseCredit() {
-
+        changeFragmentNeedBack(R.id.fl_main, IncreaseCreditFragment.newInstance(), IncreaseCreditFragment.TAG);
     }
 
     @Override

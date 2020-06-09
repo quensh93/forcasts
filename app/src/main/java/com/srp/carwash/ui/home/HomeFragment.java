@@ -1,10 +1,13 @@
 package com.srp.carwash.ui.home;
 
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
+
 import com.srp.carwash.R;
 import com.srp.carwash.databinding.FragmentHomeBinding;
 import com.srp.carwash.ui.base.BaseFragment;
+
 import javax.inject.Inject;
 
 public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeFragmentViewModel> implements HomeFragmentCallback {
@@ -26,7 +29,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeFragment
         super.onCreate(savedInstanceState);
         mViewModel.setNavigator(this);
         try {
-            mViewModel.getMyOrder();
+            mViewModel.getForcasts();
         } catch (Exception e) {
             e.printStackTrace();
         }

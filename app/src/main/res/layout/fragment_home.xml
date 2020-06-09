@@ -61,7 +61,6 @@
 
         </LinearLayout>
 
-
         <androidx.recyclerview.widget.RecyclerView
             forecastAdapter="@{viewModel.forcastsAdapter}"
             android:layout_width="match_parent"

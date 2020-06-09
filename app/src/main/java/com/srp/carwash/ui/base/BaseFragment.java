@@ -17,16 +17,18 @@
 package com.srp.carwash.ui.base;
 
 import android.content.Context;
-import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
 import android.os.Bundle;
-import androidx.annotation.LayoutRes;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
+import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
 
@@ -158,5 +160,13 @@ public abstract class BaseFragment<T extends ViewDataBinding, V extends BaseView
         void onFragmentAttached();
 
         void onFragmentDetached(String tag);
+    }
+
+    public void showMessageToast(String message) {
+        Toast.makeText(getContext(), "message", Toast.LENGTH_SHORT).show();
+    }
+
+    public void showMessageToast(int message) {
+        Toast.makeText(getContext(), getString(message), Toast.LENGTH_SHORT).show();
     }
 }

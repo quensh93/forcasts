@@ -27,6 +27,10 @@ public class User extends SugarRecord {
     private int gender;
 
     @Expose
+    @SerializedName("expiredAt")
+    private String expiredAt;
+
+    @Expose
     @SerializedName("registeredAt")
     private String registeredAt;
 
@@ -58,4 +62,7 @@ public class User extends SugarRecord {
         return registeredAt;
     }
 
+    public String getExpiredAt() {
+        return expiredAt;
+    }
 }

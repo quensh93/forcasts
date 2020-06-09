@@ -91,4 +91,9 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding, LoginViewM
     public void showMessage(int message) {
         showMessageToast(message);
     }
+
+    @Override
+    public void onBack() {
+
+    }
 }

@@ -1,8 +1,9 @@
 package com.srp.carwash.ui.contact;
 
-public interface ContactUsFragmentCallback {
+import com.srp.carwash.ui.base.BaseNavigator;
 
-    void onBack();
+public interface ContactUsFragmentCallback extends BaseNavigator {
 
     void onSend();
+
 }

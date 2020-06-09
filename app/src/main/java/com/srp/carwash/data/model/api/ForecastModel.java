@@ -34,8 +34,8 @@ public class ForecastModel {
     private int type;
 
     @Expose
-    @SerializedName("Risk")
-    private int Risk;
+    @SerializedName("risk")
+    private int risk;
 
     @Expose
     @SerializedName("ratio")
@@ -58,10 +58,6 @@ public class ForecastModel {
     private String  offeredPrice;
 
     @Expose
-    @SerializedName("sellPrice")
-    private String  sellPrice;
-
-    @Expose
     @SerializedName("startTime")
     private String startTime;
 
@@ -70,16 +66,8 @@ public class ForecastModel {
     private String startDate;
 
     @Expose
-    @SerializedName("numberOfSell")
-    private int numberOfSell;
-
-    @Expose
     @SerializedName("status")
     private int status;
-
-    @Expose
-    @SerializedName("bought")
-    private boolean bought;
 
     @Expose
     @SerializedName("createdAt")
@@ -103,14 +91,6 @@ public class ForecastModel {
 
     public int getId() {
         return id;
-    }
-
-    public int getNumberOfSell() {
-        return numberOfSell;
-    }
-
-    public int getRisk() {
-        return Risk;
     }
 
     public int getSportId() {
@@ -161,15 +141,7 @@ public class ForecastModel {
         return team2;
     }
 
-    public String getSellPrice() {
-        return sellPrice;
-    }
-
-    public void setBought(boolean bought) {
-        this.bought = bought;
-    }
-
-    public boolean isBought() {
-        return bought;
+    public int getRisk() {
+        return risk;
     }
 }
