@@ -13,6 +13,7 @@ import com.srp.carwash.data.model.api.ForecastModel;
 import com.srp.carwash.data.model.api.MyOrder;
 import com.srp.carwash.ui.base.BaseViewModel;
 import com.srp.carwash.utils.rx.SchedulerProvider;
+
 import java.lang.reflect.Type;
 import java.util.List;
 
@@ -26,24 +27,6 @@ public class HomeFragmentViewModel extends BaseViewModel<HomeFragmentCallback> {
         super(dataManager, schedulerProvider);
     }
 
-    public void getMyOrder() throws Exception {
-        getCompositeDisposable().add(getDataManager()
-                .doGetMyOrder()
-                .subscribeOn(getSchedulerProvider().io())
-                .observeOn(getSchedulerProvider().ui())
-                .subscribe(response -> {
-                            Gson gson = new Gson();
-                            Type listType = new TypeToken<List<MyOrder>>() {
-                            }.getType();
-                            myOrders = gson.fromJson(response, listType);
-                            getForcasts();
-                        }
-                        , throwable -> {
-                            Log.e("","");
-                        }
-                ));
-    }
-
     public void getForcasts() throws Exception {
         getCompositeDisposable().add(getDataManager()
                 .doGetForecasts()
@@ -53,13 +36,7 @@ public class HomeFragmentViewModel extends BaseViewModel<HomeFragmentCallback> {
                             Gson gson = new Gson();
                             Type listType = new TypeToken<List<ForecastModel>>() {}.getType();
                             List<ForecastModel> forcasts = gson.fromJson(response, listType);
-                            for (int i = 0; i < forcasts.size(); i++) {
-                                ForecastModel forecastModel = forcasts.get(i);
-                                for (int j = 0; j < myOrders.size(); j++)
-                                    if (forecastModel.getForecastId()==myOrders.get(j).getForcastId())
-                                        forecastModel.setBought(true);
-                                data.add(forecastModel);
-                            }
+                            data.addAll(forcasts);
                             forcastsAdapter.notifyDataSetChanged();
                         }
                         , throwable -> {

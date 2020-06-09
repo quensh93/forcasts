@@ -46,14 +46,28 @@ public class ContactUsFragment extends BaseFragment<FragmentContactUsBinding, Co
     }
 
     @Override
+    public void showMessage(String message) {
+        showMessageToast(message);
+    }
+
+    @Override
+    public void showMessage(int message) {
+        showMessageToast(message);
+    }
+
+    @Override
     public void onBack() {
-        if(getActivity() != null)
+        if (getActivity() != null)
             getActivity().onBackPressed();
     }
 
     @Override
     public void onSend() {
-
+        try {
+            mViewModel.doContactUs();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

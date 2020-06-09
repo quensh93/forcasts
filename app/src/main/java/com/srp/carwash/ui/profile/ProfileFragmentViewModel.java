@@ -19,11 +19,15 @@ public class ProfileFragmentViewModel extends BaseViewModel<ProfileFragmentCallb
         getNavigator().onContactUs();
     }
 
-    public void onAboutUsClicked(){
+    public void onAboutUsClicked() {
         getNavigator().onAboutUs();
     }
 
-    public void onReportsClicked(){
+    public void onReportsClicked() {
         getNavigator().onReports();
+    }
+
+    public void onIncreaseCredit() {
+        getNavigator().onIncreaseCredit();
     }
 }

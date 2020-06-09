@@ -10,4 +10,8 @@
     <string name="verify">تایید</string>
     <string name="register">ثبت نام</string>
     <string name="public_error">متاسفانه خطایی رخ داد</string>
+    <string name="contact_successfully">پیام شما با موفقیت ارسال شد.</string>
+    <string name="increase_credit_successfully">درخواست افزایش موجودی با موفقیت ثبت شد.</string>
+    <string name="increase_credit">کاربران گرامی، شما می توانید با مراجعه به وب سایت بت فوروارد شارژ و تهیه کد شارژ بت فوروارد و وارد کردن آن در باکس زیر نسبت به افزایش موجودی خود اقدام نمایید. پس از ثبت کد شارژ حداکثر ظرف مدت 1 ساعت کد وارد شده بررسی و موجودی شما افزایش خواهد یافت.
+    </string>
 </resources>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.srp.carwash.data.model.api.VoucherModel" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_3sdp"
+        app:cardBackgroundColor="@color/colorPrimaryDark2"
+        app:cardCornerRadius="@dimen/_2sdp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layoutDirection="ltr"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/_5sdp"
+            android:paddingTop="@dimen/_3sdp"
+            android:paddingRight="@dimen/_5sdp"
+            android:paddingBottom="@dimen/_3sdp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center_vertical"
+                android:layout_weight="1"
+                android:gravity="left|center_vertical"
+                android:maxLines="1"
+                android:padding="@dimen/_5sdp"
+                android:text="@{model.createdAt}"
+                android:textSize="@dimen/_10sdp" />
+
+            <TextView
+                thousandSeparator="@{model.price}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center_vertical"
+                android:layout_weight="1"
+                android:gravity="left|center_vertical"
+                android:maxLines="1"
+                android:padding="@dimen/_5sdp"
+                android:textSize="@dimen/_11sdp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:layout_weight="1"
+                android:gravity="right|center_vertical"
+                android:maxLines="1"
+                android:padding="@dimen/_7sdp"
+                android:text="@{model.voucher}"
+                android:textSize="@dimen/_11sdp" />
+
+
+            <LinearLayout
+                android:layout_width="@dimen/_3sdp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:background="@{model.status ==0 ? @color/colorAccent2 : (model.status ==1 ? @color/colorAccent3 : @color/red)}"
+                android:orientation="vertical" />
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

@@ -32,8 +32,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.srp.carwash.R;
 import com.srp.carwash.ui.home.ForcastsAdapter;
+import com.srp.carwash.ui.increase_credit.VouchersAdapter;
 
+import java.text.NumberFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 public final class BindingUtils {
 
@@ -90,9 +93,40 @@ public final class BindingUtils {
         view.setAdapter(adapter);
     }
 
+    @BindingAdapter("vouchersAdapter")
+    public static void setVouchersAdapter(RecyclerView view, VouchersAdapter adapter) {
+        view.setAdapter(adapter);
+    }
+
+    @BindingAdapter("thousandSeparator")
+    public static void setThousandSeparator(TextView view, String price) {
+        if (price == null || price.length() < 4)
+            return;
+        view.setText(NumberFormat.getNumberInstance(Locale.US).format(Double.valueOf(price)) + " تومان ");
+    }
+
+    @BindingAdapter("riskText")
+    public static void setRiskText(TextView view, int risk) {
+        switch (risk) {
+            case 1:
+            default:
+                view.setText("ریسک : پایین");
+                break;
+            case 2:
+                view.setText("ریسک : متوسط");
+                break;
+            case 3:
+                view.setText("ریسک : بالا");
+                break;
+
+        }
+    }
+
     @BindingAdapter("leagueIcon")
     public static void setLeagueIcon(ImageView view, String league) {
-        switch (league){
+        if (league == null)
+            return;
+        switch (league) {
             case "لیگ قهرمانان اروپا":
             default:
                 view.setImageResource(R.drawable.denmark);
