@@ -83,11 +83,11 @@ public class AppApiHelper implements ApiHelper {
     }
 
     @Override
-    public Single<String> doUploadAvatar(String uid, File avatar) throws Exception {
+    public Single<String> doUploadAvatar(int uid, File avatar) throws Exception {
         return Rx2AndroidNetworking.upload(ApiEndPoint.UPLOAD_AVATAR)
                 .addHeaders("Authorization", "123456")
                 .addMultipartFile("file", avatar)
-                .addMultipartParameter("uid", uid)
+                .addMultipartParameter("uid", "" + uid)
                 .build()
                 .getStringSingle();
     }

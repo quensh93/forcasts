@@ -26,6 +26,6 @@ public interface ApiHelper {
 
     Single<String> doGetVouchers(BaseRequest request) throws Exception;
 
-    Single<String> doUploadAvatar(String uid, File avatar) throws Exception;
+    Single<String> doUploadAvatar(int uid, File avatar) throws Exception;
 
 }

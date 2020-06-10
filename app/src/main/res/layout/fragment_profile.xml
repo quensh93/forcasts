@@ -65,7 +65,7 @@
                         android:src="@drawable/avatar"
                         app:civ_border_color="@color/colorAccent"
                         android:layout_gravity="center"
-                        loadAvatar="@{viewModel.avatar}"
+                        loadAvatar="@{viewModel.user.uid}"
                         android:onClick="@{()->viewModel.onAvatarClicked()}"
                         app:civ_border_width="4dp"
                         app:civ_shadow_color="@color/colorPrimary" />
@@ -85,12 +85,13 @@
                             android:layoutDirection="ltr"
                             android:layout_gravity="right|center_vertical"
                             android:gravity="right|center_vertical">
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="right|center_vertical"
                                 android:gravity="right|center_vertical"
-                                android:text="سجاد رحمانی پور"/>
+                                android:text="@{viewModel.user.name}" />
 
 
                             <ImageView
@@ -107,12 +108,13 @@
                             android:layoutDirection="ltr"
                             android:layout_gravity="right|center_vertical"
                             android:gravity="right|center_vertical">
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="right|center_vertical"
                                 android:gravity="right|center_vertical"
-                                android:text="27,000 تومان"/>
+                                thousandSeparator='@{""+viewModel.user.credit}' />
 
 
                             <ImageView
@@ -129,12 +131,13 @@
                             android:layoutDirection="ltr"
                             android:layout_gravity="right|center_vertical"
                             android:gravity="right|center_vertical">
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="right|center_vertical"
                                 android:gravity="right|center_vertical"
-                                android:text="27 روز مانده"/>
+                                android:text='@{viewModel.user.expireJalali}' />
 
 
                             <ImageView

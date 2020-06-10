@@ -12,11 +12,11 @@ import java.io.File;
 
 public class ProfileFragmentViewModel extends BaseViewModel<ProfileFragmentCallback> {
 
-    public ObservableField<String> avatar = new ObservableField<>();
+    public ObservableField<User> user = new ObservableField<>();
 
     public ProfileFragmentViewModel(DataManager dataManager, SchedulerProvider schedulerProvider) {
         super(dataManager, schedulerProvider);
-        avatar.set("" + User.find(User.class, null, null).get(0).getUid());
+        user.set(User.find(User.class, null, null).get(0));
     }
 
     public void clickDismiss() {
@@ -43,14 +43,13 @@ public class ProfileFragmentViewModel extends BaseViewModel<ProfileFragmentCallb
         getNavigator().onAvatar();
     }
 
-
     public void doCallLogin(File file) throws Exception {
         getCompositeDisposable().add(getDataManager()
-                .doUploadAvatar(avatar.get(), file)
+                .doUploadAvatar(user.get().getUid(), file)
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(response -> {
-                            avatar.notifyChange();
+                            user.notifyChange();
                         }
                         , throwable -> {
                             getNavigator().showMessage(R.string.public_error);

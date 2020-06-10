@@ -111,7 +111,7 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Single<String> doUploadAvatar(String uid, File avatar) throws Exception {
+    public Single<String> doUploadAvatar(int uid, File avatar) throws Exception {
         return mApiHelper.doUploadAvatar(uid, avatar);
     }
 
