@@ -17,8 +17,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical" >
 
-
-
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -50,128 +48,165 @@
                 android:layout_marginBottom="@dimen/_3sdp"
                 android:layout_marginRight="@dimen/_20sdp"
                 android:layout_gravity="center"
-                app:srcCompat="@drawable/ic_arrow"/>
+                app:srcCompat="@drawable/ic_arrow" />
 
 
         </LinearLayout>
 
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right|center_vertical"
-            android:gravity="right|center_vertical"
-            android:padding="@dimen/_15sdp"
-            android:lineSpacingExtra="@dimen/_3sdp"
-            android:textSize="@dimen/_12sdp"
-            android:text="از تماس شما با پشتیبای سپاسگذاریم، تیم پشتیبانی ما در سریعترین زمان ممکن پاسخگو خواهد بود. ما با گوشی شنوا آماده شنیدن انتقادات و پیشنهادات شما کاربران گرامی هستیم."/>
-
-
-
-        <com.google.android.material.textfield.TextInputLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/_40sdp"
-            android:theme="@style/EditScreenTextInputLayoutStyle"
-            android:layout_marginLeft="@dimen/_40sdp"
-            android:layout_marginTop="@dimen/_15sdp">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/_20sdp">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:layout_gravity="right|center_vertical"
-                android:gravity="right|center_vertical"
-                android:textColorHint="@color/light"
-                android:textColor="@color/light"
-                android:textSize="@dimen/_12sdp"
-                android:onTextChanged="@{viewModel::onTextChanged}"
-                android:text="@={viewModel.title}"
-                android:hint="عنوان">
-
-
-            </com.google.android.material.textfield.TextInputEditText>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right|center_vertical"
-            android:gravity="right|center_vertical"
-            android:textColor="@color/red"
-            android:textSize="@dimen/_9sdp"
-            android:layout_marginRight="@dimen/_40sdp"
-            android:layout_marginLeft="@dimen/_40sdp"
-            android:visibility="@{viewModel.errorCode==1 ? View.VISIBLE : View.GONE}"
-            android:text="عنوان را به درستی وارد نمایید، حداقل 5 کاراکتر"/>
-
-
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/_40sdp"
-            android:layout_marginLeft="@dimen/_40sdp"
-            android:theme="@style/EditScreenTextInputLayoutStyle"
-            android:layout_marginTop="@dimen/_15sdp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textMultiLine"
-                android:minHeight="@dimen/_120sdp"
-                android:textColorHint="@color/light"
-                android:textColor="@color/light"
-                android:layout_gravity="right|top"
-                android:gravity="right|top"
-                android:onTextChanged="@{viewModel::onTextChanged}"
-                android:textSize="@dimen/_12sdp"
-                android:text="@={viewModel.description}"
-                android:hint="متن">
-
-
-            </com.google.android.material.textfield.TextInputEditText>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right|center_vertical"
-            android:gravity="right|center_vertical"
-            android:textColor="@color/red"
-            android:textSize="@dimen/_9sdp"
-            android:visibility="@{viewModel.errorCode==2 ? View.VISIBLE : View.GONE}"
-            android:layout_marginRight="@dimen/_40sdp"
-            android:layout_marginLeft="@dimen/_40sdp"
-            android:text="متن را به درستی وارد نمایید، حداقل 15 کاراکتر"/>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="@dimen/_5sdp"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:layout_gravity="center"
-            app:cardBackgroundColor="@color/colorAccent">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="@dimen/_120sdp"
+                android:layout_height="@dimen/_120sdp"
                 android:layout_gravity="center"
-                android:gravity="center"
-                android:paddingLeft="@dimen/_40sdp"
-                android:paddingRight="@dimen/_40sdp"
-                android:paddingBottom="@dimen/_7sdp"
-                android:paddingTop="@dimen/_7sdp"
-                android:onClick="@{()->viewModel.onSendClicked()}"
-                android:text="ارسال"/>
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="contact_us.json"
+                app:lottie_loop="true" />
 
-        </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_30sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                app:cardBackgroundColor="@color/colorPrimaryDark2"
+                app:cardCornerRadius="@dimen/_5sdp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_20sdp">
+
+                    <com.codesgood.views.JustifiedTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="از تماس شما با پشتیبای سپاسگذاریم."
+                        android:textColor="@color/light"
+                        android:textSize="@dimen/_11ssp" />
+
+
+                    <com.srp.carwash.component.SmartEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|center_horizontal"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:background="@color/edittextbg"
+                        android:gravity="right|center_horizontal"
+                        android:hint="عنوان"
+                        android:inputType="text"
+                        android:maxLength="11"
+                        android:maxLines="1"
+                        android:onTextChanged="@{viewModel::onTextChanged}"
+                        android:padding="@dimen/_5sdp"
+                        android:text="@={viewModel.title}"
+                        android:textColor="@color/light"
+                        android:textColorHint="@color/light" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:gravity="center"
+                        android:text="عنوان را به درستی وارد نمایید، حداقل 5 کاراکتر"
+                        android:textColor="@color/red"
+                        android:textSize="@dimen/_10ssp"
+                        android:visibility="@{viewModel.errorCode==1 ? View.VISIBLE : View.GONE}" />
+
+
+                    <com.srp.carwash.component.SmartEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|center_horizontal"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:background="@color/edittextbg"
+                        android:gravity="right|center_horizontal"
+                        android:hint="متن"
+                        android:inputType="textMultiLine"
+                        android:minHeight="@dimen/_65sdp"
+                        android:onTextChanged="@{viewModel::onTextChanged}"
+                        android:padding="@dimen/_5sdp"
+                        android:text="@={viewModel.description}"
+                        android:textColor="@color/light"
+                        android:textColorHint="@color/light" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:gravity="center"
+                        android:text="متن را به درستی وارد نمایید، حداقل 15 کاراکتر"
+                        android:textColor="@color/red"
+                        android:textSize="@dimen/_10ssp"
+                        android:visibility="@{viewModel.errorCode==2 ? View.VISIBLE : View.GONE}" />
+
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:onClick="@{()->viewModel.onSendClicked()}"
+                        app:cardBackgroundColor="@color/colorAccent2"
+                        app:cardCornerRadius="@dimen/_5sdp">
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:paddingLeft="@dimen/_40sdp"
+                                android:paddingTop="@dimen/_7sdp"
+                                android:paddingRight="@dimen/_40sdp"
+                                android:paddingBottom="@dimen/_7sdp"
+                                android:text="@string/send"
+                                android:textColor="@color/white"
+                                android:visibility="@{viewModel.loadingStatus ? View.INVISIBLE : View.VISIBLE}" />
+
+
+                            <ProgressBar
+                                android:id="@+id/pbHeaderProgress"
+                                style="?android:attr/progressBarStyleSmall"
+                                android:layout_width="@dimen/_25sdp"
+                                android:layout_height="@dimen/_25sdp"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:layout_gravity="center"
+                                android:theme="@style/ProgressBarTheme"
+                                android:visibility="@{viewModel.loadingStatus ? View.VISIBLE : View.INVISIBLE}"></ProgressBar>
+
+                        </RelativeLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
 
     </LinearLayout>
 </layout>

@@ -37,7 +37,7 @@ public class HomeFragmentViewModel extends BaseViewModel<HomeFragmentCallback> {
                             Type listType = new TypeToken<List<ForecastModel>>() {}.getType();
                             List<ForecastModel> forcasts = gson.fromJson(response, listType);
                             data.addAll(forcasts);
-                            forcastsAdapter.notifyDataSetChanged();
+                            forcastsAdapter.notifyData(data);
                         }
                         , throwable -> {
                             Log.e("","");

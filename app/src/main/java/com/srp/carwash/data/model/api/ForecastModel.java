@@ -73,6 +73,7 @@ public class ForecastModel {
     @SerializedName("createdAt")
     private String createdAt;
 
+
     public ForecastModel(){
 
     }

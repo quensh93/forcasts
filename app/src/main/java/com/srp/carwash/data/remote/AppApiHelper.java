@@ -7,6 +7,8 @@ import com.srp.carwash.data.model.api.IncreaseCreditRequest;
 import com.srp.carwash.data.model.api.LoginRequest;
 import com.srp.carwash.data.model.api.VerifyRequest;
 
+import java.io.File;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -76,6 +78,16 @@ public class AppApiHelper implements ApiHelper {
         return Rx2AndroidNetworking.post(ApiEndPoint.GET_VOUCHERS)
                 .addHeaders("Authorization", "123456")
                 .addApplicationJsonBody(request)
+                .build()
+                .getStringSingle();
+    }
+
+    @Override
+    public Single<String> doUploadAvatar(String uid, File avatar) throws Exception {
+        return Rx2AndroidNetworking.upload(ApiEndPoint.UPLOAD_AVATAR)
+                .addHeaders("Authorization", "123456")
+                .addMultipartFile("file", avatar)
+                .addMultipartParameter("uid", uid)
                 .build()
                 .getStringSingle();
     }

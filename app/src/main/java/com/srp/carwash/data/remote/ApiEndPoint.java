@@ -11,6 +11,9 @@ public final class ApiEndPoint {
     public static final String INCREASE_CREDIT = BuildConfig.BASE_URL + "increaseCredit.php";
     public static final String GET_VOUCHERS = BuildConfig.BASE_URL + "getVouchers.php";
 
+    public static final String LOAD_AVATAR = BuildConfig.BASE_URL + "uploads/";
+    public static final String UPLOAD_AVATAR = BuildConfig.BASE_URL + "uploadAvatar.php";
+
     private ApiEndPoint() {
 
     }

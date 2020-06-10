@@ -10,7 +10,7 @@
 
         <variable
             name="data"
-            type="com.srp.carwash.data.model.api.ForecastModel" />
+            type="com.srp.carwash.data.model.api.MixForecastModel" />
     </data>
 
     <LinearLayout
@@ -28,61 +28,25 @@
             app:cardBackgroundColor="@color/colorPrimaryDark2"
             app:cardCornerRadius="@dimen/_5sdp">
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="@dimen/_15sdp">
+                android:orientation="vertical">
 
-                <LinearLayout
+                <androidx.recyclerview.widget.RecyclerView
+                    mixForecastsAdapter="@{data.matchList}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:layoutDirection="ltr"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="left"
-                        android:layout_weight="1"
-                        android:gravity="left"
-                        android:padding="@dimen/_3sdp"
-                        android:text="@{data.startTime}"
-                        android:textSize="@dimen/_10sdp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="right|center_vertical"
-                        android:gravity="right|center_vertical"
-                        android:padding="@dimen/_3sdp"
-                        android:text="@{data.league}"
-                        android:textSize="@dimen/_10sdp" />
-
-                    <ImageView
-                        leagueIcon="@{data.league}"
-                        android:layout_width="@dimen/_20sdp"
-                        android:layout_height="@dimen/_20sdp"
-                        android:layout_gravity="center"
-                        android:layout_margin="@dimen/_3sdp" />
-
-                    <ImageView
-                        sportIcon="@{data.sportId}"
-                        android:layout_width="@dimen/_17sdp"
-                        android:layout_height="@dimen/_17sdp"
-                        android:layout_gravity="center"
-                        android:layout_margin="@dimen/_3sdp" />
-
-                </LinearLayout>
+                    android:padding="@dimen/_15sdp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:layout_marginLeft="@dimen/_7sdp"
+                    android:layout_height="@dimen/_1sdp"
+                    android:layout_marginLeft="@dimen/_22sdp"
                     android:layout_marginTop="@dimen/_2sdp"
-                    android:layout_marginRight="@dimen/_7sdp"
+                    android:layout_marginRight="@dimen/_22sdp"
                     android:layout_marginBottom="@dimen/_2sdp"
                     android:background="@color/colorAccent2" />
 
@@ -93,91 +57,16 @@
                     android:layout_marginTop="@dimen/_5sdp"
                     android:gravity="center"
                     android:layoutDirection="ltr"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="right|center_vertical"
-                        android:layout_weight="1"
-                        android:gravity="right|center_vertical"
-                        android:layoutDirection="ltr"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="right"
-                            android:gravity="right"
-                            android:padding="@dimen/_3sdp"
-                            android:text="@{data.team2}"
-                            android:textSize="@dimen/_12sdp" />
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:gravity="center"
-                            android:padding="@dimen/_3sdp"
-                            android:text="   -   "
-                            android:textSize="@dimen/_12sdp" />
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="right"
-                            android:gravity="right"
-                            android:padding="@dimen/_3sdp"
-                            android:text="@{data.team1}"
-                            android:textSize="@dimen/_12sdp" />
-                    </LinearLayout>
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:layoutDirection="ltr"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        thousandSeparator="@{data.offeredPrice}"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="left|center_vertical"
-                        android:gravity="left|center_vertical"
-                        android:padding="@dimen/_3sdp"
-                        android:textSize="@dimen/_12sdp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="right"
-                        android:layout_weight="1"
-                        android:gravity="right"
-                        android:padding="@dimen/_3sdp"
-                        android:text="@{data.forecast}"
-                        android:textSize="@dimen/_12sdp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:gravity="center"
-                    android:layoutDirection="ltr"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/_15sdp"
+                    android:paddingRight="@dimen/_15sdp"
+                    android:paddingBottom="@dimen/_10sdp">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical" />
+
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
@@ -206,7 +95,7 @@
                                 android:layout_gravity="center"
                                 android:layout_weight="1"
                                 android:gravity="center"
-                                android:text='@{""+data.ratio}'
+                                android:text='@{""+data.totalRatio}'
                                 android:textSize="@dimen/_11sdp" />
 
                         </LinearLayout>
@@ -214,18 +103,29 @@
                     </androidx.cardview.widget.CardView>
 
                     <TextView
-                        riskText="@{data.risk}"
+                        thousandSeparator="@{data.offeredPrice}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/_3sdp"
+                        android:textSize="@dimen/_12sdp" />
+
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right|center_vertical"
-                        android:layout_weight="1"
                         android:gravity="right|center_vertical"
                         android:padding="@dimen/_3sdp"
+                        android:text="ریسک : بالا"
                         android:textSize="@dimen/_12sdp" />
 
                 </LinearLayout>
 
+
             </LinearLayout>
+
 
         </androidx.cardview.widget.CardView>
 

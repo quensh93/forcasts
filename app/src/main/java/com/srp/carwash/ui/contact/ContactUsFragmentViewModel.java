@@ -1,5 +1,6 @@
 package com.srp.carwash.ui.contact;
 
+import androidx.databinding.ObservableBoolean;
 import androidx.databinding.ObservableField;
 import androidx.databinding.ObservableInt;
 
@@ -16,6 +17,7 @@ public class ContactUsFragmentViewModel extends BaseViewModel<ContactUsFragmentC
     public ObservableField<String> title = new ObservableField<>();
     public ObservableField<String> description = new ObservableField<>();
     public ObservableInt errorCode = new ObservableInt(0);
+    public ObservableBoolean loadingStatus = new ObservableBoolean();
 
     public ContactUsFragmentViewModel(DataManager dataManager, SchedulerProvider schedulerProvider) {
         super(dataManager, schedulerProvider);
@@ -25,10 +27,12 @@ public class ContactUsFragmentViewModel extends BaseViewModel<ContactUsFragmentC
         getNavigator().onBack();
     }
 
-    public void onSendClicked(){
-        if (!CommonUtils.nullChecker(title.get()) || title.get().length()<5)
+    public void onSendClicked() {
+        if (loadingStatus.get())
+            return;
+        if (!CommonUtils.nullChecker(title.get()) || title.get().length() < 5)
             errorCode.set(1);
-        else if (!CommonUtils.nullChecker(description.get()) || description.get().length()<15)
+        else if (!CommonUtils.nullChecker(description.get()) || description.get().length() < 15)
             errorCode.set(2);
         else
             getNavigator().onSend();
@@ -44,15 +48,18 @@ public class ContactUsFragmentViewModel extends BaseViewModel<ContactUsFragmentC
 
 
     public void doContactUs() throws Exception {
+        loadingStatus.set(true);
         getCompositeDisposable().add(getDataManager()
-                .doContactUs(new ContactUsRequest(User.find(User.class, "", "").get(0).getUid(), title.get(), description.get()))
+                .doContactUs(new ContactUsRequest(User.find(User.class, null, null).get(0).getUid(), title.get(), description.get()))
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(response -> {
+                            loadingStatus.set(false);
                             getNavigator().showMessage(R.string.contact_successfully);
                             getNavigator().onBack();
                         }
                         , throwable -> {
+                            loadingStatus.set(false);
                             getNavigator().showMessage(R.string.public_error);
                         }
                 ));
