@@ -20,6 +20,7 @@ import com.srp.carwash.data.remote.ApiHelper;
 import com.srp.carwash.utils.AppConstants;
 import com.srp.carwash.utils.CommonUtils;
 
+import java.io.File;
 import java.lang.reflect.Type;
 import java.util.List;
 
@@ -107,6 +108,11 @@ public class AppDataManager implements DataManager {
     @Override
     public Single<String> doGetVouchers(BaseRequest request) throws Exception {
         return mApiHelper.doGetVouchers(request);
+    }
+
+    @Override
+    public Single<String> doUploadAvatar(String uid, File avatar) throws Exception {
+        return mApiHelper.doUploadAvatar(uid, avatar);
     }
 
     @Override

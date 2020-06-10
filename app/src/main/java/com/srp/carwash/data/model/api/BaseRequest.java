@@ -12,4 +12,8 @@ public class BaseRequest {
     public BaseRequest(int uid) {
         this.uid = uid;
     }
+
+    public int getUid() {
+        return uid;
+    }
 }

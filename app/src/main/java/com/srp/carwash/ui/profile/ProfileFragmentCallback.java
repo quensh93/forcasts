@@ -1,8 +1,8 @@
 package com.srp.carwash.ui.profile;
 
-public interface ProfileFragmentCallback {
+import com.srp.carwash.ui.base.BaseNavigator;
 
-    void onBack();
+public interface ProfileFragmentCallback extends BaseNavigator {
 
     void onEditprofile();
 
@@ -19,4 +19,6 @@ public interface ProfileFragmentCallback {
     void onIncreaseCredit();
 
     void onLicence();
+
+    void onAvatar();
 }

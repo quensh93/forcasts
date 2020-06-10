@@ -4,26 +4,56 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ObservableArrayList;
 import androidx.databinding.ObservableList;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.srp.carwash.R;
 import com.srp.carwash.data.model.api.ForecastModel;
+import com.srp.carwash.data.model.api.MixForecastModel;
 import com.srp.carwash.databinding.ListItemForcastBinding;
 import com.srp.carwash.databinding.ListItemForcastMixBinding;
 
 public class ForcastsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private ObservableList<ForecastModel> data;
+    private ObservableList<MixForecastModel> mixed = new ObservableArrayList<>();
 
     public ForcastsAdapter(ObservableList<ForecastModel> data) {
-        this.data = data;
+        calculateData(data);
+    }
+
+    public void notifyData(ObservableList<ForecastModel> data) {
+        calculateData(data);
+    }
+
+    private void calculateData(ObservableList<ForecastModel> data) {
+        int i;
+        for (i = 0; i < data.size(); i++) {
+            ForecastModel forecastModel = data.get(i);
+            if (forecastModel.getType() == 1) {
+                MixForecastModel mixForecastModel1 = new MixForecastModel(forecastModel.getForecastId(), forecastModel.getTotalRatio(), forecastModel.getOfferedPrice(), forecastModel.getCreatedAt(), 1);
+                mixForecastModel1.setMatch(forecastModel);
+                mixed.add(mixForecastModel1);
+            } else {
+                MixForecastModel mixForecastModel = new MixForecastModel(forecastModel.getForecastId(), forecastModel.getTotalRatio(), forecastModel.getOfferedPrice(), forecastModel.getCreatedAt(), 2);
+                mixForecastModel.setMatch(forecastModel);
+                for (int j = i + 1; j < data.size(); j++) {
+                    ForecastModel forecastModelNext = data.get(j);
+                    if (forecastModelNext.getForecastId() == forecastModel.getForecastId()) {
+                        mixForecastModel.setMatch(forecastModelNext);
+                        i = i + 1;
+                    }
+                }
+                mixed.add(mixForecastModel);
+            }
+        }
+        notifyDataSetChanged();
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         switch (viewType) {
-            case 0:
+            case 1:
             default:
                 ListItemForcastBinding binding = DataBindingUtil.inflate(
                         LayoutInflater.from(parent.getContext()),
@@ -40,22 +70,22 @@ public class ForcastsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
-        switch (data.get(position).getType()) {
+        switch (mixed.get(position).getType()) {
             case 1:
                 ViewHolder0 viewHolder0 = (ViewHolder0) holder;
-                viewHolder0.binding.setData(data.get(position));
+                viewHolder0.binding.setData(mixed.get(position).getMatchList().get(0));
                 break;
 
-            case 3:
+            case 2:
                 ViewHolder1 viewHolder2 = (ViewHolder1) holder;
-
+                viewHolder2.binding.setData(mixed.get(position));
                 break;
         }
     }
 
     @Override
     public int getItemCount() {
-        return data.size();
+        return mixed.size();
     }
 
 
@@ -77,5 +107,8 @@ public class ForcastsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
     }
 
-
+    @Override
+    public int getItemViewType(int position) {
+        return mixed.get(position).getType();
+    }
 }

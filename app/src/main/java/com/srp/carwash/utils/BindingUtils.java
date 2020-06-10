@@ -30,11 +30,17 @@ import androidx.databinding.BindingAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.mikhaellopez.circularimageview.CircularImageView;
 import com.srp.carwash.R;
+import com.srp.carwash.data.model.api.ForecastModel;
+import com.srp.carwash.data.remote.ApiEndPoint;
 import com.srp.carwash.ui.home.ForcastsAdapter;
+import com.srp.carwash.ui.home.MixForcastsAdapter;
 import com.srp.carwash.ui.increase_credit.VouchersAdapter;
 
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -98,6 +104,23 @@ public final class BindingUtils {
         view.setAdapter(adapter);
     }
 
+    @BindingAdapter("mixForecastsAdapter")
+    public static void setMixForecastsAdapter(RecyclerView view, ArrayList<ForecastModel> model) {
+        view.setAdapter(new MixForcastsAdapter(model));
+    }
+
+    @BindingAdapter("loadAvatar")
+    public static void setLoadAvatar(CircularImageView view, String userId) {
+        Glide
+                .with(view.getContext())
+                .load(ApiEndPoint.LOAD_AVATAR + userId + ".jpg")
+                .centerCrop()
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .skipMemoryCache(true)
+                .placeholder(R.drawable.avatar)
+                .into(view);
+    }
+
     @BindingAdapter("thousandSeparator")
     public static void setThousandSeparator(TextView view, String price) {
         if (price == null || price.length() < 4)
@@ -122,7 +145,7 @@ public final class BindingUtils {
         }
     }
 
-    @BindingAdapter("leagueIcon")
+    @BindingAdapter("countryIcon")
     public static void setLeagueIcon(ImageView view, String league) {
         if (league == null)
             return;
@@ -131,14 +154,20 @@ public final class BindingUtils {
             default:
                 view.setImageResource(R.drawable.denmark);
                 break;
-            case "لیگ برتر انگلیس":
+            case "انگلیس":
                 view.setImageResource(R.drawable.england);
                 break;
-            case "بوندس لیگا":
+            case "آلمان":
                 view.setImageResource(R.drawable.germany);
                 break;
-            case "لالیگا":
+            case "اسپانیا":
                 view.setImageResource(R.drawable.spain);
+                break;
+            case "ایران":
+                view.setImageResource(R.drawable.iran);
+                break;
+            case "ایتالیا":
+                view.setImageResource(R.drawable.italy);
                 break;
         }
     }

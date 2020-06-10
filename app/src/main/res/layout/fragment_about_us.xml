@@ -57,93 +57,122 @@
             android:padding="@dimen/_10sdp"
             android:orientation="vertical">
 
-            <com.codesgood.views.JustifiedTextView
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="@dimen/_120sdp"
+                android:layout_height="@dimen/_120sdp"
+                android:layout_gravity="center"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="contact_us.json"
+                app:lottie_loop="true" />
+
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:gravity="right"
-                android:textSize="@dimen/_12sdp"
-                android:text="@string/about"/>
+                android:layout_marginLeft="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_30sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                app:cardBackgroundColor="@color/colorPrimaryDark2"
+                app:cardCornerRadius="@dimen/_5sdp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:layout_gravity="right|center_vertical"
-                openDialer="@{true}"
-                android:gravity="right|center_vertical"
-                android:orientation="horizontal"
-                android:layoutDirection="ltr">
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right|center_vertical"
-                    android:gravity="right|center_vertical"
-                    android:padding="@dimen/_5sdp"
-                    android:textSize="@dimen/_12sdp"
-                    android:text="تلفن همراه : 09199315027"/>
+                    android:orientation="vertical"
+                    android:padding="@dimen/_20sdp">
 
-                <ImageView
-                    android:layout_width="@dimen/_18sdp"
-                    android:layout_height="@dimen/_18sdp"
-                    android:layout_gravity="center"
-                    app:srcCompat="@drawable/ic_smartphone"/>
+                    <com.codesgood.views.JustifiedTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:gravity="right"
+                        android:text="@string/about"
+                        android:textSize="@dimen/_11sdp" />
 
-            </LinearLayout>
+                    <LinearLayout
+                        openDialer="@{true}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|center_vertical"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:gravity="right|center_vertical"
+                        android:layoutDirection="ltr"
+                        android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right|center_vertical"
-                android:gravity="right|center_vertical"
-                openEmail="@{true}"
-                android:orientation="horizontal"
-                android:layoutDirection="ltr">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right|center_vertical"
+                            android:gravity="right|center_vertical"
+                            android:padding="@dimen/_5sdp"
+                            android:text="تلفن همراه : 09199315027"
+                            android:textSize="@dimen/_12sdp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right|center_vertical"
-                    android:gravity="right|center_vertical"
-                    android:padding="@dimen/_5sdp"
-                    android:textSize="@dimen/_12sdp"
-                    android:text="ایمیل : quensh93@gmail.com"/>
+                        <ImageView
+                            android:layout_width="@dimen/_18sdp"
+                            android:layout_height="@dimen/_18sdp"
+                            android:layout_gravity="center"
+                            app:srcCompat="@drawable/ic_smartphone" />
 
-                <ImageView
-                    android:layout_width="@dimen/_18sdp"
-                    android:layout_height="@dimen/_18sdp"
-                    android:layout_gravity="center"
-                    app:srcCompat="@drawable/ic_email"/>
+                    </LinearLayout>
 
-            </LinearLayout>
+                    <LinearLayout
+                        openEmail="@{true}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|center_vertical"
+                        android:gravity="right|center_vertical"
+                        android:layoutDirection="ltr"
+                        android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right|center_vertical"
-                android:gravity="right|center_vertical"
-                openTelegram="@{true}"
-                android:orientation="horizontal"
-                android:layoutDirection="ltr">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right|center_vertical"
+                            android:gravity="right|center_vertical"
+                            android:padding="@dimen/_5sdp"
+                            android:text="ایمیل : quensh93@gmail.com"
+                            android:textSize="@dimen/_12sdp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right|center_vertical"
-                    android:gravity="right|center_vertical"
-                    android:textSize="@dimen/_12sdp"
-                    android:padding="@dimen/_5sdp"
-                    android:textDirection="rtl"
-                    android:text="تلگرام : sajadrahmanipour"/>
+                        <ImageView
+                            android:layout_width="@dimen/_18sdp"
+                            android:layout_height="@dimen/_18sdp"
+                            android:layout_gravity="center"
+                            app:srcCompat="@drawable/ic_email" />
 
-                <ImageView
-                    android:layout_width="@dimen/_18sdp"
-                    android:layout_height="@dimen/_18sdp"
-                    android:layout_gravity="center"
-                    app:srcCompat="@drawable/ic_paper_plane"/>
+                    </LinearLayout>
 
-            </LinearLayout>
+                    <LinearLayout
+                        openTelegram="@{true}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|center_vertical"
+                        android:gravity="right|center_vertical"
+                        android:layoutDirection="ltr"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right|center_vertical"
+                            android:gravity="right|center_vertical"
+                            android:padding="@dimen/_5sdp"
+                            android:text="تلگرام : sajadrahmanipour"
+                            android:textDirection="rtl"
+                            android:textSize="@dimen/_12sdp" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_18sdp"
+                            android:layout_height="@dimen/_18sdp"
+                            android:layout_gravity="center"
+                            app:srcCompat="@drawable/ic_paper_plane" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
 
         </LinearLayout>
 

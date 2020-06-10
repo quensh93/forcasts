@@ -65,8 +65,10 @@
                         android:src="@drawable/avatar"
                         app:civ_border_color="@color/colorAccent"
                         android:layout_gravity="center"
+                        loadAvatar="@{viewModel.avatar}"
+                        android:onClick="@{()->viewModel.onAvatarClicked()}"
                         app:civ_border_width="4dp"
-                        app:civ_shadow_color="@color/colorPrimary"/>
+                        app:civ_shadow_color="@color/colorPrimary" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
