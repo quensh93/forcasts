@@ -110,7 +110,7 @@ public final class BindingUtils {
     }
 
     @BindingAdapter("loadAvatar")
-    public static void setLoadAvatar(CircularImageView view, String userId) {
+    public static void setLoadAvatar(CircularImageView view, int userId) {
         Glide
                 .with(view.getContext())
                 .load(ApiEndPoint.LOAD_AVATAR + userId + ".jpg")
