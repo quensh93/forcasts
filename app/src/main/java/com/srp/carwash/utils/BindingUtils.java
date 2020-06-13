@@ -19,18 +19,25 @@ package com.srp.carwash.utils;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.databinding.BindingAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.srp.carwash.R;
 import com.srp.carwash.data.model.api.ForecastModel;
@@ -111,6 +118,7 @@ public final class BindingUtils {
 
     @BindingAdapter("loadAvatar")
     public static void setLoadAvatar(CircularImageView view, int userId) {
+        Log.e("avatar", ApiEndPoint.LOAD_AVATAR + userId + ".jpg");
         Glide
                 .with(view.getContext())
                 .load(ApiEndPoint.LOAD_AVATAR + userId + ".jpg")
@@ -118,14 +126,28 @@ public final class BindingUtils {
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .skipMemoryCache(true)
                 .placeholder(R.drawable.avatar)
+                .addListener(new RequestListener<Drawable>() {
+                    @Override
+                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                        Log.e("avatar", "onLoadFailed");
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                        Log.e("avatar", "onResourceReady");
+                        return false;
+                    }
+                })
                 .into(view);
     }
 
     @BindingAdapter("thousandSeparator")
     public static void setThousandSeparator(TextView view, String price) {
         if (price == null || price.length() < 4)
-            return;
-        view.setText(NumberFormat.getNumberInstance(Locale.US).format(Double.valueOf(price)) + " تومان ");
+            view.setText("0 تومان");
+        else
+            view.setText(NumberFormat.getNumberInstance(Locale.US).format(Double.valueOf(price)) + " تومان ");
     }
 
     @BindingAdapter("riskText")

@@ -179,7 +179,7 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding, Profil
 
     private void upload(File file) {
         try {
-            mViewModel.doCallLogin(file);
+            mViewModel.doCallLogin(getContext(), file);
         } catch (Exception e) {
             e.printStackTrace();
         }

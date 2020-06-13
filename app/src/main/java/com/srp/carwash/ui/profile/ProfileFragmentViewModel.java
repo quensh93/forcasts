@@ -1,10 +1,16 @@
 package com.srp.carwash.ui.profile;
 
+import android.content.Context;
+import android.util.Log;
+
 import androidx.databinding.ObservableField;
 
-import com.srp.carwash.R;
+import com.koushikdutta.async.future.FutureCallback;
+import com.koushikdutta.ion.Ion;
+import com.koushikdutta.ion.ProgressCallback;
 import com.srp.carwash.data.DataManager;
 import com.srp.carwash.data.model.api.User;
+import com.srp.carwash.data.remote.ApiEndPoint;
 import com.srp.carwash.ui.base.BaseViewModel;
 import com.srp.carwash.utils.rx.SchedulerProvider;
 
@@ -43,17 +49,27 @@ public class ProfileFragmentViewModel extends BaseViewModel<ProfileFragmentCallb
         getNavigator().onAvatar();
     }
 
-    public void doCallLogin(File file) throws Exception {
-        getCompositeDisposable().add(getDataManager()
-                .doUploadAvatar(user.get().getUid(), file)
-                .subscribeOn(getSchedulerProvider().io())
-                .observeOn(getSchedulerProvider().ui())
-                .subscribe(response -> {
-                            user.notifyChange();
-                        }
-                        , throwable -> {
-                            getNavigator().showMessage(R.string.public_error);
-                        }
-                ));
+    public void doCallLogin(Context context, File file) throws Exception {
+        Ion.with(context)
+                .load(ApiEndPoint.UPLOAD_AVATAR)
+                .uploadProgressHandler(new ProgressCallback() {
+                    @Override
+                    public void onProgress(long uploaded, long total) {
+                        Log.e("avatar", "" + uploaded);
+
+                    }
+                })
+                .setTimeout(60 * 60 * 1000)
+                .setMultipartFile("file", "image/jpeg", file)
+                .setMultipartParameter("uid", user.get().getUid() + "")
+                .asString()
+                // run a callback on completion
+                .setCallback(new FutureCallback<String>() {
+                    @Override
+                    public void onCompleted(Exception e, String result) {
+                        Log.e("avatar", "result : " + result);
+                        user.notifyChange();
+                    }
+                });
     }
 }
