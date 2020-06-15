@@ -2,6 +2,7 @@ package com.srp.carwash.data.remote;
 
 import com.srp.carwash.data.model.api.BaseRequest;
 import com.srp.carwash.data.model.api.ContactUsRequest;
+import com.srp.carwash.data.model.api.ExtendSubRequest;
 import com.srp.carwash.data.model.api.IncreaseCreditRequest;
 import com.srp.carwash.data.model.api.LoginRequest;
 import com.srp.carwash.data.model.api.RegisterRequest;
@@ -23,5 +24,11 @@ public interface ApiHelper {
     Single<String> doIncreaseCredit(IncreaseCreditRequest request) throws Exception;
 
     Single<String> doGetVouchers(BaseRequest request) throws Exception;
+
+    Single<String> doGetPackages() throws Exception;
+
+    Single<String> doExtendSubscription(ExtendSubRequest extendSubRequest) throws Exception;
+
+    Single<String> doGetUserInfo(BaseRequest request) throws Exception;
 
 }

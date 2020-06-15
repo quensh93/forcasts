@@ -17,8 +17,10 @@ import com.srp.carwash.databinding.ListItemForcastMixBinding;
 public class ForcastsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private ObservableList<MixForecastModel> mixed = new ObservableArrayList<>();
+    private onMixListener onMixListener;
 
-    public ForcastsAdapter(ObservableList<ForecastModel> data) {
+    public ForcastsAdapter(ObservableList<ForecastModel> data, onMixListener onMixListener) {
+        this.onMixListener = onMixListener;
         calculateData(data);
     }
 
@@ -79,6 +81,7 @@ public class ForcastsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             case 2:
                 ViewHolder1 viewHolder2 = (ViewHolder1) holder;
                 viewHolder2.binding.setData(mixed.get(position));
+                viewHolder2.binding.setAdapter(this);
                 break;
         }
     }
@@ -110,5 +113,9 @@ public class ForcastsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public int getItemViewType(int position) {
         return mixed.get(position).getType();
+    }
+
+    public void onMixClicked(MixForecastModel model) {
+        this.onMixListener.onMix(model);
     }
 }

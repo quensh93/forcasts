@@ -44,7 +44,9 @@ import com.srp.carwash.data.model.api.ForecastModel;
 import com.srp.carwash.data.remote.ApiEndPoint;
 import com.srp.carwash.ui.home.ForcastsAdapter;
 import com.srp.carwash.ui.home.MixForcastsAdapter;
+import com.srp.carwash.ui.home.detail.MixForecastsDetailAdapter;
 import com.srp.carwash.ui.increase_credit.VouchersAdapter;
+import com.srp.carwash.ui.packages.PackagesAdapter;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -116,6 +118,16 @@ public final class BindingUtils {
         view.setAdapter(new MixForcastsAdapter(model));
     }
 
+    @BindingAdapter("packagesAdapter")
+    public static void setPackagesAdapter(RecyclerView view, PackagesAdapter adapter) {
+        view.setAdapter(adapter);
+    }
+
+    @BindingAdapter("mixForecastsDetailAdapter")
+    public static void setMixForecastsDetailAdapter(RecyclerView view, MixForecastsDetailAdapter adapter) {
+        view.setAdapter(adapter);
+    }
+
     @BindingAdapter("loadAvatar")
     public static void setLoadAvatar(CircularImageView view, int userId) {
         Log.e("avatar", ApiEndPoint.LOAD_AVATAR + userId + ".jpg");
@@ -145,9 +157,9 @@ public final class BindingUtils {
     @BindingAdapter("thousandSeparator")
     public static void setThousandSeparator(TextView view, String price) {
         if (price == null || price.length() < 4)
-            view.setText("0 تومان");
+            view.setText("0 ریال");
         else
-            view.setText(NumberFormat.getNumberInstance(Locale.US).format(Double.valueOf(price)) + " تومان ");
+            view.setText(NumberFormat.getNumberInstance(Locale.US).format(Double.valueOf(price)) + " ریال ");
     }
 
     @BindingAdapter("riskText")

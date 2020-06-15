@@ -10,6 +10,9 @@ public final class ApiEndPoint {
     public static final String CONTACT_US = BuildConfig.BASE_URL + "contactUs.php";
     public static final String INCREASE_CREDIT = BuildConfig.BASE_URL + "increaseCredit.php";
     public static final String GET_VOUCHERS = BuildConfig.BASE_URL + "getVouchers.php";
+    public static final String EXTEND_SUBSCRIPTION = BuildConfig.BASE_URL + "extendSubscription.php";
+    public static final String GET_PACKAGES = BuildConfig.BASE_URL + "getPackages.php";
+    public static final String GET_USER_INFO = BuildConfig.BASE_URL + "getUserInfo.php";
 
     public static final String LOAD_AVATAR = BuildConfig.BASE_URL + "uploads/";
     public static final String UPLOAD_AVATAR = BuildConfig.BASE_URL + "uploadFile.php";

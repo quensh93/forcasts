@@ -3,11 +3,14 @@ package com.srp.carwash.di.builder;
 import com.srp.carwash.ui.about.AboutUsFragmentProvider;
 import com.srp.carwash.ui.contact.ContactUsFragmentProvider;
 import com.srp.carwash.ui.home.HomeFragmentProvider;
+import com.srp.carwash.ui.home.detail.MixForecastsDetailProvider;
 import com.srp.carwash.ui.increase_credit.IncreaseCreditFragmentProvider;
+import com.srp.carwash.ui.investment.InvestmentFragmentProvider;
 import com.srp.carwash.ui.login.LoginActivity;
 import com.srp.carwash.ui.login.LoginActivityModule;
 import com.srp.carwash.ui.main.MainActivity;
 import com.srp.carwash.ui.main.MainActivityModule;
+import com.srp.carwash.ui.packages.PackagesFragmentProvider;
 import com.srp.carwash.ui.profile.ProfileFragmentProvider;
 import com.srp.carwash.ui.reports.ReportsFragmentProvider;
 import com.srp.carwash.ui.splash.SplashActivity;
@@ -29,7 +32,10 @@ public abstract class ActivityBuilder {
             AboutUsFragmentProvider.class,
             ContactUsFragmentProvider.class,
             ReportsFragmentProvider.class,
-            IncreaseCreditFragmentProvider.class})
+            IncreaseCreditFragmentProvider.class,
+            MixForecastsDetailProvider.class,
+            InvestmentFragmentProvider.class,
+            PackagesFragmentProvider.class})
 
     abstract MainActivity bindMainActivity();
 

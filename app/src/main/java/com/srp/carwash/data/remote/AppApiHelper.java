@@ -3,6 +3,7 @@ package com.srp.carwash.data.remote;
 import com.rx2androidnetworking.Rx2AndroidNetworking;
 import com.srp.carwash.data.model.api.BaseRequest;
 import com.srp.carwash.data.model.api.ContactUsRequest;
+import com.srp.carwash.data.model.api.ExtendSubRequest;
 import com.srp.carwash.data.model.api.IncreaseCreditRequest;
 import com.srp.carwash.data.model.api.LoginRequest;
 import com.srp.carwash.data.model.api.RegisterRequest;
@@ -74,6 +75,32 @@ public class AppApiHelper implements ApiHelper {
     @Override
     public Single<String> doGetVouchers(BaseRequest request) throws Exception {
         return Rx2AndroidNetworking.post(ApiEndPoint.GET_VOUCHERS)
+                .addHeaders("Authorization", "123456")
+                .addApplicationJsonBody(request)
+                .build()
+                .getStringSingle();
+    }
+
+    @Override
+    public Single<String> doGetPackages() throws Exception {
+        return Rx2AndroidNetworking.get(ApiEndPoint.GET_PACKAGES)
+                .addHeaders("Authorization", "123456")
+                .build()
+                .getStringSingle();
+    }
+
+    @Override
+    public Single<String> doExtendSubscription(ExtendSubRequest request) throws Exception {
+        return Rx2AndroidNetworking.post(ApiEndPoint.EXTEND_SUBSCRIPTION)
+                .addHeaders("Authorization", "123456")
+                .addApplicationJsonBody(request)
+                .build()
+                .getStringSingle();
+    }
+
+    @Override
+    public Single<String> doGetUserInfo(BaseRequest request) throws Exception {
+        return Rx2AndroidNetworking.post(ApiEndPoint.GET_USER_INFO)
                 .addHeaders("Authorization", "123456")
                 .addApplicationJsonBody(request)
                 .build()

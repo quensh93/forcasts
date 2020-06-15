@@ -9,6 +9,7 @@ import com.srp.carwash.data.local.db.DbHelper;
 import com.srp.carwash.data.local.prefs.PreferencesHelper;
 import com.srp.carwash.data.model.api.BaseRequest;
 import com.srp.carwash.data.model.api.ContactUsRequest;
+import com.srp.carwash.data.model.api.ExtendSubRequest;
 import com.srp.carwash.data.model.api.IncreaseCreditRequest;
 import com.srp.carwash.data.model.api.LoginRequest;
 import com.srp.carwash.data.model.api.RegisterRequest;
@@ -107,6 +108,21 @@ public class AppDataManager implements DataManager {
     @Override
     public Single<String> doGetVouchers(BaseRequest request) throws Exception {
         return mApiHelper.doGetVouchers(request);
+    }
+
+    @Override
+    public Single<String> doGetPackages() throws Exception {
+        return mApiHelper.doGetPackages();
+    }
+
+    @Override
+    public Single<String> doExtendSubscription(ExtendSubRequest request) throws Exception {
+        return mApiHelper.doExtendSubscription(request);
+    }
+
+    @Override
+    public Single<String> doGetUserInfo(BaseRequest request) throws Exception {
+        return mApiHelper.doGetUserInfo(request);
     }
 
     @Override

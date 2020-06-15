@@ -5,8 +5,10 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 
 import com.srp.carwash.R;
+import com.srp.carwash.data.model.api.MixForecastModel;
 import com.srp.carwash.databinding.FragmentHomeBinding;
 import com.srp.carwash.ui.base.BaseFragment;
+import com.srp.carwash.ui.home.detail.MixForecastsDetailFragment;
 
 import javax.inject.Inject;
 
@@ -29,7 +31,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeFragment
         super.onCreate(savedInstanceState);
         mViewModel.setNavigator(this);
         try {
-            mViewModel.getForcasts();
+            mViewModel.getForecasts();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -51,9 +53,8 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeFragment
     }
 
     @Override
-    public void onBack() {
-        if(getActivity() != null)
-            getActivity().onBackPressed();
+    public void onMIxClicked(MixForecastModel model) {
+        changeFragmentNeedBack(R.id.fl_main, MixForecastsDetailFragment.newInstance(model), MixForecastsDetailFragment.TAG);
     }
 
 }

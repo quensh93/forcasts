@@ -5,10 +5,13 @@ import android.util.Log;
 
 import androidx.databinding.ObservableField;
 
+import com.google.gson.Gson;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 import com.koushikdutta.ion.ProgressCallback;
 import com.srp.carwash.data.DataManager;
+import com.srp.carwash.data.model.api.BaseRequest;
+import com.srp.carwash.data.model.api.LoginResponse;
 import com.srp.carwash.data.model.api.User;
 import com.srp.carwash.data.remote.ApiEndPoint;
 import com.srp.carwash.ui.base.BaseViewModel;
@@ -29,7 +32,7 @@ public class ProfileFragmentViewModel extends BaseViewModel<ProfileFragmentCallb
         getNavigator().onBack();
     }
 
-    public void onContactUsClicked(){
+    public void onContactUsClicked() {
         getNavigator().onContactUs();
     }
 
@@ -37,8 +40,8 @@ public class ProfileFragmentViewModel extends BaseViewModel<ProfileFragmentCallb
         getNavigator().onAboutUs();
     }
 
-    public void onReportsClicked() {
-        getNavigator().onReports();
+    public void onExtendSubscription() {
+        getNavigator().onExtend();
     }
 
     public void onIncreaseCredit() {
@@ -49,7 +52,7 @@ public class ProfileFragmentViewModel extends BaseViewModel<ProfileFragmentCallb
         getNavigator().onAvatar();
     }
 
-    public void doCallLogin(Context context, File file) throws Exception {
+    public void doUpload(Context context, File file) throws Exception {
         Ion.with(context)
                 .load(ApiEndPoint.UPLOAD_AVATAR)
                 .uploadProgressHandler(new ProgressCallback() {
@@ -71,5 +74,24 @@ public class ProfileFragmentViewModel extends BaseViewModel<ProfileFragmentCallb
                         user.notifyChange();
                     }
                 });
+    }
+
+    public void doGetUserInfo() throws Exception {
+        getCompositeDisposable().add(getDataManager()
+                .doGetUserInfo(new BaseRequest(User.find(User.class, null, null).get(0).getUid()))
+                .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
+                .subscribe(response -> {
+                            LoginResponse verifyResponse = new Gson().fromJson(response, LoginResponse.class);
+                            if (verifyResponse.isResult()) {
+                                verifyResponse.getUser().save();
+                                user.set(verifyResponse.getUser());
+                                user.notifyChange();
+                            }
+                        }
+                        , throwable -> {
+                            Log.e("", "");
+                        }
+                ));
     }
 }

@@ -170,155 +170,6 @@
                         android:padding="@dimen/_10sdp"
                         android:orientation="vertical">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:padding="@dimen/_3sdp"
-                            android:orientation="horizontal"
-                            android:layoutDirection="ltr">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="left|center_vertical"
-                                android:gravity="left|center_vertical"
-                                android:paddingLeft="@dimen/_5sdp"
-                                android:paddingRight="@dimen/_5sdp"
-                                android:text="5 خرید" />
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="right|center_vertical"
-                                android:layout_weight="1"
-                                android:gravity="right|center_vertical"
-                                android:paddingLeft="@dimen/_5sdp"
-                                android:paddingRight="@dimen/_5sdp"
-                                android:text="تعداد خرید ها" />
-
-
-                            <ImageView
-                                android:layout_width="@dimen/_25sdp"
-                                android:layout_height="@dimen/_25sdp"
-                                android:layout_gravity="center"
-                                android:padding="5dp"
-                                app:srcCompat="@drawable/ic_analytics" />
-
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:padding="@dimen/_3sdp"
-                            android:orientation="horizontal"
-                            android:layoutDirection="ltr">
-
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="left|center_vertical"
-                                android:gravity="left|center_vertical"
-                                android:paddingLeft="@dimen/_5sdp"
-                                android:paddingRight="@dimen/_5sdp"
-                                android:text="4 برد" />
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="right|center_vertical"
-                                android:layout_weight="1"
-                                android:gravity="right|center_vertical"
-                                android:paddingLeft="@dimen/_5sdp"
-                                android:paddingRight="@dimen/_5sdp"
-                                android:text="تعداد بردها" />
-
-
-                            <ImageView
-                                android:layout_width="@dimen/_25sdp"
-                                android:layout_height="@dimen/_25sdp"
-                                android:layout_gravity="center"
-                                android:padding="5dp"
-                                app:srcCompat="@drawable/ic_award" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:padding="@dimen/_3sdp"
-                            android:orientation="horizontal"
-                            android:layoutDirection="ltr">
-
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="left|center_vertical"
-                                android:gravity="left|center_vertical"
-                                android:paddingLeft="@dimen/_5sdp"
-                                android:paddingRight="@dimen/_5sdp"
-                                android:text="85 درصد" />
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="right|center_vertical"
-                                android:layout_weight="1"
-                                android:gravity="right|center_vertical"
-                                android:paddingLeft="@dimen/_5sdp"
-                                android:paddingRight="@dimen/_5sdp"
-                                android:text="درصد برد" />
-
-
-                            <ImageView
-                                android:layout_width="@dimen/_25sdp"
-                                android:layout_height="@dimen/_25sdp"
-                                android:layout_gravity="center"
-                                android:padding="5dp"
-                                app:srcCompat="@drawable/ic_tax" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:padding="@dimen/_3sdp"
-                            android:layoutDirection="ltr">
-
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="left|center_vertical"
-                                android:gravity="left|center_vertical"
-                                android:paddingLeft="@dimen/_5sdp"
-                                android:paddingRight="@dimen/_5sdp"
-                                android:text="1398/10/10" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="right|center_vertical"
-                                android:layout_weight="1"
-                                android:gravity="right|center_vertical"
-                                android:paddingLeft="@dimen/_5sdp"
-                                android:paddingRight="@dimen/_5sdp"
-                                android:text="آخرین خرید" />
-
-                            <ImageView
-                                android:layout_width="@dimen/_25sdp"
-                                android:layout_height="@dimen/_25sdp"
-                                android:layout_gravity="center"
-                                android:padding="5dp"
-                                app:srcCompat="@drawable/ic_24_hours" />
-
-                        </LinearLayout>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="0.5dp"
-                            android:background="@color/colorAccent2"
-                            android:layout_margin="@dimen/_10sdp"/>
-
-
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -400,14 +251,14 @@
                                 android:orientation="vertical"
                                 android:padding="@dimen/_3sdp"
                                 android:layoutDirection="ltr"
-                                android:onClick="@{()->viewModel.onReportsClicked()}">
+                                android:onClick="@{()->viewModel.onExtendSubscription()}">
 
                                 <ImageView
                                     android:layout_width="@dimen/_20sdp"
                                     android:layout_height="@dimen/_20sdp"
                                     android:layout_gravity="center"
                                     android:layout_margin="5dp"
-                                    app:srcCompat="@drawable/ic_growth" />
+                                    app:srcCompat="@drawable/ic_subscription" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -418,7 +269,7 @@
                                     android:paddingTop="@dimen/_7sdp"
                                     android:paddingRight="@dimen/_4sdp"
                                     android:paddingBottom="@dimen/_7sdp"
-                                    android:text="گزارش ها"
+                                    android:text="اشتراک"
                                     android:textSize="@dimen/_10sdp" />
 
 

@@ -6,13 +6,11 @@ public interface ProfileFragmentCallback extends BaseNavigator {
 
     void onEditprofile();
 
-    void onChangeAvatar();
-
     void onContactUs();
 
     void onAboutUs();
 
-    void onReports();
+    void onExtend();
 
     void onCashout();
 

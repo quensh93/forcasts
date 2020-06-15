@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -16,7 +17,7 @@ import com.srp.carwash.ui.about.AboutUsFragment;
 import com.srp.carwash.ui.base.BaseFragment;
 import com.srp.carwash.ui.contact.ContactUsFragment;
 import com.srp.carwash.ui.increase_credit.IncreaseCreditFragment;
-import com.srp.carwash.ui.reports.ReportsFragment;
+import com.srp.carwash.ui.packages.PackagesFragment;
 import com.yalantis.ucrop.UCrop;
 
 import java.io.File;
@@ -43,6 +44,8 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding, Profil
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Log.e("sajad", "onCreate");
         mViewModel.setNavigator(this);
     }
 
@@ -83,11 +86,6 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding, Profil
     }
 
     @Override
-    public void onChangeAvatar() {
-
-    }
-
-    @Override
     public void onContactUs() {
         changeFragmentNeedBack(R.id.fl_main, ContactUsFragment.newInstance(), ContactUsFragment.TAG);
     }
@@ -98,8 +96,8 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding, Profil
     }
 
     @Override
-    public void onReports() {
-        changeFragmentNeedBack(R.id.fl_main, ReportsFragment.newInstance(), ReportsFragment.TAG);
+    public void onExtend() {
+        changeFragmentNeedBack(R.id.fl_main, PackagesFragment.newInstance(), PackagesFragment.TAG);
     }
 
     @Override
@@ -177,9 +175,25 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding, Profil
         }
     }
 
+    @Override
+    public void onStart() {
+        try {
+            mViewModel.doGetUserInfo();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        super.onStart();
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        Log.e("sajad", "onHiddenChanged");
+        super.onHiddenChanged(hidden);
+    }
+
     private void upload(File file) {
         try {
-            mViewModel.doCallLogin(getContext(), file);
+            mViewModel.doUpload(getContext(), file);
         } catch (Exception e) {
             e.printStackTrace();
         }
