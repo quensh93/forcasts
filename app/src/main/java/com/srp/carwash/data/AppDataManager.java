@@ -7,7 +7,7 @@ import com.google.gson.internal.$Gson$Types;
 import com.google.gson.reflect.TypeToken;
 import com.srp.carwash.data.local.db.DbHelper;
 import com.srp.carwash.data.local.prefs.PreferencesHelper;
-import com.srp.carwash.data.model.api.BaseRequest;
+import com.srp.carwash.data.model.api.CheckoutRequest;
 import com.srp.carwash.data.model.api.ContactUsRequest;
 import com.srp.carwash.data.model.api.ExtendSubRequest;
 import com.srp.carwash.data.model.api.IncreaseCreditRequest;
@@ -106,8 +106,8 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Single<String> doGetVouchers(BaseRequest request) throws Exception {
-        return mApiHelper.doGetVouchers(request);
+    public Single<String> doGetVouchers() throws Exception {
+        return mApiHelper.doGetVouchers();
     }
 
     @Override
@@ -121,8 +121,18 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Single<String> doGetUserInfo(BaseRequest request) throws Exception {
-        return mApiHelper.doGetUserInfo(request);
+    public Single<String> doGetUserInfo() throws Exception {
+        return mApiHelper.doGetUserInfo();
+    }
+
+    @Override
+    public Single<String> doGetCheckouts() throws Exception {
+        return mApiHelper.doGetCheckouts();
+    }
+
+    @Override
+    public Single<String> doAddCheckout(CheckoutRequest request) throws Exception {
+        return mApiHelper.doAddCheckout(request);
     }
 
     @Override

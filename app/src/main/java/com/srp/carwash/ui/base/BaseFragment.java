@@ -163,7 +163,7 @@ public abstract class BaseFragment<T extends ViewDataBinding, V extends BaseView
     }
 
     public void showMessageToast(String message) {
-        Toast.makeText(getContext(), "message", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }
 
     public void showMessageToast(int message) {

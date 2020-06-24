@@ -1,6 +1,9 @@
 package com.srp.carwash.ui.checkout;
 
-public interface CheckoutFragmentCallback {
+import com.srp.carwash.ui.base.BaseNavigator;
 
-    void onBack();
+public interface CheckoutFragmentCallback extends BaseNavigator {
+
+    void onAddCheckout();
+
 }

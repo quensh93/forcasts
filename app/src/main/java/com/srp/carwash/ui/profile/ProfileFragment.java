@@ -2,9 +2,9 @@ package com.srp.carwash.ui.profile;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -15,6 +15,7 @@ import com.srp.carwash.R;
 import com.srp.carwash.databinding.FragmentProfileBinding;
 import com.srp.carwash.ui.about.AboutUsFragment;
 import com.srp.carwash.ui.base.BaseFragment;
+import com.srp.carwash.ui.checkout.CheckoutFragment;
 import com.srp.carwash.ui.contact.ContactUsFragment;
 import com.srp.carwash.ui.increase_credit.IncreaseCreditFragment;
 import com.srp.carwash.ui.packages.PackagesFragment;
@@ -44,8 +45,6 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding, Profil
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        Log.e("sajad", "onCreate");
         mViewModel.setNavigator(this);
     }
 
@@ -81,7 +80,7 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding, Profil
     }
 
     @Override
-    public void onEditprofile() {
+    public void onEditProfile() {
 
     }
 
@@ -101,8 +100,8 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding, Profil
     }
 
     @Override
-    public void onCashout() {
-
+    public void onCashOut() {
+        changeFragmentNeedBack(R.id.fl_main, CheckoutFragment.newInstance(), CheckoutFragment.TAG);
     }
 
     @Override
@@ -111,8 +110,12 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding, Profil
     }
 
     @Override
-    public void onLicence() {
-
+    public void onExit() {
+        if (Build.VERSION.SDK_INT >= 16 && Build.VERSION.SDK_INT < 21) {
+            getActivity().finishAffinity();
+        } else if (Build.VERSION.SDK_INT >= 21) {
+            getActivity().finishAndRemoveTask();
+        }
     }
 
     @Override
@@ -183,12 +186,6 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding, Profil
             e.printStackTrace();
         }
         super.onStart();
-    }
-
-    @Override
-    public void onHiddenChanged(boolean hidden) {
-        Log.e("sajad", "onHiddenChanged");
-        super.onHiddenChanged(hidden);
     }
 
     private void upload(File file) {

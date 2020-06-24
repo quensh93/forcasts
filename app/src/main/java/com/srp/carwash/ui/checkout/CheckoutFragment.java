@@ -6,7 +6,6 @@ import androidx.annotation.Nullable;
 
 import com.srp.carwash.R;
 import com.srp.carwash.databinding.FragmentCheckoutBinding;
-import com.srp.carwash.databinding.FragmentIncreaseCreditBinding;
 import com.srp.carwash.ui.base.BaseFragment;
 
 import javax.inject.Inject;
@@ -29,6 +28,11 @@ public class CheckoutFragment extends BaseFragment<FragmentCheckoutBinding, Chec
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mViewModel.setNavigator(this);
+        try {
+            mViewModel.doGetCheckouts();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -47,9 +51,27 @@ public class CheckoutFragment extends BaseFragment<FragmentCheckoutBinding, Chec
     }
 
     @Override
+    public void showMessage(String message) {
+        showMessageToast(message);
+    }
+
+    @Override
+    public void showMessage(int message) {
+        showMessageToast(message);
+    }
+
+    @Override
     public void onBack() {
-        if(getActivity() != null)
+        if (getActivity() != null)
             getActivity().onBackPressed();
     }
 
+    @Override
+    public void onAddCheckout() {
+        try {
+            mViewModel.doAddCheckout();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

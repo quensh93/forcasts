@@ -41,6 +41,10 @@ public class User extends SugarRecord {
     @SerializedName("registeredAt")
     private String registeredAt;
 
+    @Expose
+    @SerializedName("token")
+    private String token;
+
     public User() {
 
     }
@@ -90,6 +94,10 @@ public class User extends SugarRecord {
     private static long getUnitBetweenDates(Date startDate, Date endDate, TimeUnit unit) {
         long timeDiff = endDate.getTime() - startDate.getTime();
         return unit.convert(timeDiff, TimeUnit.MILLISECONDS);
+    }
+
+    public String getToken() {
+        return token;
     }
 
     public String getExpireJalali() {

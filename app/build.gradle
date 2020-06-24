@@ -32,13 +32,13 @@ android {
     }
     buildTypes {
         debug {
-            buildConfigField("String", "BASE_URL", "\"http://sajadrahmanipour.ir/forcasts/\"")
+            buildConfigField("String", "BASE_URL", "\"http://sajadrahmanipour.ir/forecastsApis/\"")
             buildConfigField("String", "API_KEY", "\"ABCXYZ123TEST\"")
         }
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField("String", "BASE_URL", "\"http://sajadrahmanipour.ir/forcasts/\"")
+            buildConfigField("String", "BASE_URL", "\"http://sajadrahmanipour.ir/forecastsApis/\"")
             buildConfigField("String", "API_KEY", "\"ABCXYZ123TEST\"")
         }
     }

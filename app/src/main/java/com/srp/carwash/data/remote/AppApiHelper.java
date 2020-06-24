@@ -1,12 +1,13 @@
 package com.srp.carwash.data.remote;
 
 import com.rx2androidnetworking.Rx2AndroidNetworking;
-import com.srp.carwash.data.model.api.BaseRequest;
+import com.srp.carwash.data.model.api.CheckoutRequest;
 import com.srp.carwash.data.model.api.ContactUsRequest;
 import com.srp.carwash.data.model.api.ExtendSubRequest;
 import com.srp.carwash.data.model.api.IncreaseCreditRequest;
 import com.srp.carwash.data.model.api.LoginRequest;
 import com.srp.carwash.data.model.api.RegisterRequest;
+import com.srp.carwash.data.model.api.User;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -17,10 +18,13 @@ import io.reactivex.Single;
 public class AppApiHelper implements ApiHelper {
 
     private ApiHeader mApiHeader;
+    private String token;
 
     @Inject
     public AppApiHelper(ApiHeader apiHeader) {
         mApiHeader = apiHeader;
+        if (User.count(User.class) > 0)
+            token = User.find(User.class, null, null).get(0).getToken();
     }
 
     @Override
@@ -30,8 +34,8 @@ public class AppApiHelper implements ApiHelper {
 
     @Override
     public Single<String> doGetForecasts() throws Exception {
-        return Rx2AndroidNetworking.get(ApiEndPoint.GET_FORECASTS)
-                .addHeaders("Authorization", "123456")
+        return Rx2AndroidNetworking.get(ApiEndPoint.FORECASTS)
+                .addHeaders("Authorization", token)
                 .build()
                 .getStringSingle();
     }
@@ -39,7 +43,6 @@ public class AppApiHelper implements ApiHelper {
     @Override
     public Single<String> doLogin(LoginRequest request) throws Exception {
         return Rx2AndroidNetworking.post(ApiEndPoint.LOGIN)
-                .addHeaders("Authorization", "123456")
                 .addApplicationJsonBody(request)
                 .build()
                 .getStringSingle();
@@ -48,7 +51,6 @@ public class AppApiHelper implements ApiHelper {
     @Override
     public Single<String> doRegister(RegisterRequest request) throws Exception {
         return Rx2AndroidNetworking.post(ApiEndPoint.REGISTER)
-                .addHeaders("Authorization", "123456")
                 .addApplicationJsonBody(request)
                 .build()
                 .getStringSingle();
@@ -57,7 +59,7 @@ public class AppApiHelper implements ApiHelper {
     @Override
     public Single<String> doContactUs(ContactUsRequest request) throws Exception {
         return Rx2AndroidNetworking.post(ApiEndPoint.CONTACT_US)
-                .addHeaders("Authorization", "123456")
+                .addHeaders("Authorization", token)
                 .addApplicationJsonBody(request)
                 .build()
                 .getStringSingle();
@@ -66,25 +68,24 @@ public class AppApiHelper implements ApiHelper {
     @Override
     public Single<String> doIncreaseCredit(IncreaseCreditRequest request) throws Exception {
         return Rx2AndroidNetworking.post(ApiEndPoint.INCREASE_CREDIT)
-                .addHeaders("Authorization", "123456")
+                .addHeaders("Authorization", token)
                 .addApplicationJsonBody(request)
                 .build()
                 .getStringSingle();
     }
 
     @Override
-    public Single<String> doGetVouchers(BaseRequest request) throws Exception {
-        return Rx2AndroidNetworking.post(ApiEndPoint.GET_VOUCHERS)
-                .addHeaders("Authorization", "123456")
-                .addApplicationJsonBody(request)
+    public Single<String> doGetVouchers() throws Exception {
+        return Rx2AndroidNetworking.get(ApiEndPoint.VOUCHERS)
+                .addHeaders("Authorization", token)
                 .build()
                 .getStringSingle();
     }
 
     @Override
     public Single<String> doGetPackages() throws Exception {
-        return Rx2AndroidNetworking.get(ApiEndPoint.GET_PACKAGES)
-                .addHeaders("Authorization", "123456")
+        return Rx2AndroidNetworking.get(ApiEndPoint.PACKAGES)
+                .addHeaders("Authorization", token)
                 .build()
                 .getStringSingle();
     }
@@ -92,16 +93,32 @@ public class AppApiHelper implements ApiHelper {
     @Override
     public Single<String> doExtendSubscription(ExtendSubRequest request) throws Exception {
         return Rx2AndroidNetworking.post(ApiEndPoint.EXTEND_SUBSCRIPTION)
-                .addHeaders("Authorization", "123456")
+                .addHeaders("Authorization", token)
                 .addApplicationJsonBody(request)
                 .build()
                 .getStringSingle();
     }
 
     @Override
-    public Single<String> doGetUserInfo(BaseRequest request) throws Exception {
-        return Rx2AndroidNetworking.post(ApiEndPoint.GET_USER_INFO)
-                .addHeaders("Authorization", "123456")
+    public Single<String> doGetUserInfo() throws Exception {
+        return Rx2AndroidNetworking.get(ApiEndPoint.USER)
+                .addHeaders("Authorization", token)
+                .build()
+                .getStringSingle();
+    }
+
+    @Override
+    public Single<String> doGetCheckouts() throws Exception {
+        return Rx2AndroidNetworking.get(ApiEndPoint.CHECKOUTS)
+                .addHeaders("Authorization", token)
+                .build()
+                .getStringSingle();
+    }
+
+    @Override
+    public Single<String> doAddCheckout(CheckoutRequest request) throws Exception {
+        return Rx2AndroidNetworking.post(ApiEndPoint.ADD_CHECKOUT)
+                .addHeaders("Authorization", token)
                 .addApplicationJsonBody(request)
                 .build()
                 .getStringSingle();

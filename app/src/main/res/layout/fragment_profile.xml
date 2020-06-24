@@ -215,6 +215,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:layout_margin="@dimen/_4sdp"
+                                android:onClick="@{()-> viewModel.onCashOutClicked()}"
                                 android:background="@drawable/bordershape"
                                 android:orientation="vertical"
                                 android:padding="@dimen/_3sdp"
@@ -357,6 +358,7 @@
                                 android:layout_margin="@dimen/_4sdp"
                                 android:background="@drawable/bordershape"
                                 android:orientation="vertical"
+                                android:onClick="@{()->viewModel.onExitClicked()}"
                                 android:padding="@dimen/_3sdp"
                                 android:layoutDirection="ltr">
 

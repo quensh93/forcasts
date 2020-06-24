@@ -9,7 +9,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.srp.carwash.R;
 import com.srp.carwash.data.DataManager;
-import com.srp.carwash.data.model.api.BaseRequest;
 import com.srp.carwash.data.model.api.IncreaseCreditRequest;
 import com.srp.carwash.data.model.api.User;
 import com.srp.carwash.data.model.api.VoucherModel;
@@ -71,7 +70,7 @@ public class IncreaseCreditFragmentViewModel extends BaseViewModel<IncreaseCredi
 
     public void doGetVouchers() throws Exception {
         getCompositeDisposable().add(getDataManager()
-                .doGetVouchers(new BaseRequest(User.find(User.class, null, null).get(0).getUid()))
+                .doGetVouchers()
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(response -> {

@@ -1,19 +1,3 @@
-/*
- *  Copyright (C) 2017 MINDORKS NEXTGEN PRIVATE LIMITED
- *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *
- *      https://mindorks.com/license/apache-v2
- *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License
- */
-
 package com.srp.carwash.utils;
 
 import android.content.Context;
@@ -40,16 +24,12 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.srp.carwash.R;
-import com.srp.carwash.data.model.api.ForecastModel;
 import com.srp.carwash.data.remote.ApiEndPoint;
-import com.srp.carwash.ui.home.ForcastsAdapter;
-import com.srp.carwash.ui.home.MixForcastsAdapter;
-import com.srp.carwash.ui.home.detail.MixForecastsDetailAdapter;
+import com.srp.carwash.ui.checkout.CheckoutsAdapter;
 import com.srp.carwash.ui.increase_credit.VouchersAdapter;
 import com.srp.carwash.ui.packages.PackagesAdapter;
 
 import java.text.NumberFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -103,28 +83,18 @@ public final class BindingUtils {
         });
     }
 
-    @BindingAdapter("forecastAdapter")
-    public static void setForecastAdapter(RecyclerView view, ForcastsAdapter adapter) {
-        view.setAdapter(adapter);
-    }
-
     @BindingAdapter("vouchersAdapter")
     public static void setVouchersAdapter(RecyclerView view, VouchersAdapter adapter) {
         view.setAdapter(adapter);
     }
 
-    @BindingAdapter("mixForecastsAdapter")
-    public static void setMixForecastsAdapter(RecyclerView view, ArrayList<ForecastModel> model) {
-        view.setAdapter(new MixForcastsAdapter(model));
+    @BindingAdapter("checkoutAdapter")
+    public static void setCheckoutAdapter(RecyclerView view, CheckoutsAdapter adapter) {
+        view.setAdapter(adapter);
     }
 
     @BindingAdapter("packagesAdapter")
     public static void setPackagesAdapter(RecyclerView view, PackagesAdapter adapter) {
-        view.setAdapter(adapter);
-    }
-
-    @BindingAdapter("mixForecastsDetailAdapter")
-    public static void setMixForecastsDetailAdapter(RecyclerView view, MixForecastsDetailAdapter adapter) {
         view.setAdapter(adapter);
     }
 

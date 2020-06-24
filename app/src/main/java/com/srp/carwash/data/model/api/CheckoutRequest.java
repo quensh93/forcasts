@@ -3,17 +3,18 @@ package com.srp.carwash.data.model.api;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class BaseRequest {
+public class CheckoutRequest {
 
     @Expose
     @SerializedName("uid")
     private int uid;
 
-    public BaseRequest(int uid) {
-        this.uid = uid;
-    }
+    @Expose
+    @SerializedName("price")
+    private String price;
 
-    public int getUid() {
-        return uid;
+    public CheckoutRequest(int uid, String price) {
+        this.uid = uid;
+        this.price = price;
     }
 }

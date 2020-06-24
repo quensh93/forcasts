@@ -10,7 +10,6 @@ import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 import com.koushikdutta.ion.ProgressCallback;
 import com.srp.carwash.data.DataManager;
-import com.srp.carwash.data.model.api.BaseRequest;
 import com.srp.carwash.data.model.api.LoginResponse;
 import com.srp.carwash.data.model.api.User;
 import com.srp.carwash.data.remote.ApiEndPoint;
@@ -26,10 +25,6 @@ public class ProfileFragmentViewModel extends BaseViewModel<ProfileFragmentCallb
     public ProfileFragmentViewModel(DataManager dataManager, SchedulerProvider schedulerProvider) {
         super(dataManager, schedulerProvider);
         user.set(User.find(User.class, null, null).get(0));
-    }
-
-    public void clickDismiss() {
-        getNavigator().onBack();
     }
 
     public void onContactUsClicked() {
@@ -58,7 +53,6 @@ public class ProfileFragmentViewModel extends BaseViewModel<ProfileFragmentCallb
                 .uploadProgressHandler(new ProgressCallback() {
                     @Override
                     public void onProgress(long uploaded, long total) {
-                        Log.e("avatar", "" + uploaded);
 
                     }
                 })
@@ -70,20 +64,25 @@ public class ProfileFragmentViewModel extends BaseViewModel<ProfileFragmentCallb
                 .setCallback(new FutureCallback<String>() {
                     @Override
                     public void onCompleted(Exception e, String result) {
-                        Log.e("avatar", "result : " + result);
                         user.notifyChange();
                     }
-                });
+                }).setCallback(new FutureCallback<String>() {
+            @Override
+            public void onCompleted(Exception e, String result) {
+                Log.e("", "");
+            }
+        });
     }
 
     public void doGetUserInfo() throws Exception {
         getCompositeDisposable().add(getDataManager()
-                .doGetUserInfo(new BaseRequest(User.find(User.class, null, null).get(0).getUid()))
+                .doGetUserInfo()
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(response -> {
                             LoginResponse verifyResponse = new Gson().fromJson(response, LoginResponse.class);
                             if (verifyResponse.isResult()) {
+                                User.deleteAll(User.class);
                                 verifyResponse.getUser().save();
                                 user.set(verifyResponse.getUser());
                                 user.notifyChange();
@@ -93,5 +92,14 @@ public class ProfileFragmentViewModel extends BaseViewModel<ProfileFragmentCallb
                             Log.e("", "");
                         }
                 ));
+    }
+
+    public void onExitClicked() {
+        User.deleteAll(User.class);
+        getNavigator().onExit();
+    }
+
+    public void onCashOutClicked() {
+        getNavigator().onCashOut();
     }
 }

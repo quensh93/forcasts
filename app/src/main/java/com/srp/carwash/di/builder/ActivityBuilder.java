@@ -1,9 +1,9 @@
 package com.srp.carwash.di.builder;
 
 import com.srp.carwash.ui.about.AboutUsFragmentProvider;
+import com.srp.carwash.ui.checkout.CheckoutFragmentProvider;
 import com.srp.carwash.ui.contact.ContactUsFragmentProvider;
 import com.srp.carwash.ui.home.HomeFragmentProvider;
-import com.srp.carwash.ui.home.detail.MixForecastsDetailProvider;
 import com.srp.carwash.ui.increase_credit.IncreaseCreditFragmentProvider;
 import com.srp.carwash.ui.investment.InvestmentFragmentProvider;
 import com.srp.carwash.ui.login.LoginActivity;
@@ -33,10 +33,9 @@ public abstract class ActivityBuilder {
             ContactUsFragmentProvider.class,
             ReportsFragmentProvider.class,
             IncreaseCreditFragmentProvider.class,
-            MixForecastsDetailProvider.class,
             InvestmentFragmentProvider.class,
-            PackagesFragmentProvider.class})
-
+            PackagesFragmentProvider.class,
+            CheckoutFragmentProvider.class})
     abstract MainActivity bindMainActivity();
 
     @ContributesAndroidInjector(modules =LoginActivityModule.class)

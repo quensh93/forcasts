@@ -7,7 +7,6 @@ import androidx.databinding.ObservableInt;
 import com.srp.carwash.R;
 import com.srp.carwash.data.DataManager;
 import com.srp.carwash.data.model.api.ContactUsRequest;
-import com.srp.carwash.data.model.api.User;
 import com.srp.carwash.ui.base.BaseViewModel;
 import com.srp.carwash.utils.CommonUtils;
 import com.srp.carwash.utils.rx.SchedulerProvider;
@@ -50,7 +49,7 @@ public class ContactUsFragmentViewModel extends BaseViewModel<ContactUsFragmentC
     public void doContactUs() throws Exception {
         loadingStatus.set(true);
         getCompositeDisposable().add(getDataManager()
-                .doContactUs(new ContactUsRequest(User.find(User.class, null, null).get(0).getUid(), title.get(), description.get()))
+                .doContactUs(new ContactUsRequest(title.get(), description.get()))
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(response -> {

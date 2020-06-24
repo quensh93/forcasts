@@ -7,5 +7,5 @@ import dagger.android.ContributesAndroidInjector;
 public abstract class CheckoutFragmentProvider {
 
     @ContributesAndroidInjector(modules = CheckoutFragmentModule.class)
-    abstract CheckoutFragment provideIncreaseCreditFragmentFactory();
+    abstract CheckoutFragment provideCashOutFragmentFactory();
 }
