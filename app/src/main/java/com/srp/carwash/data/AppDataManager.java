@@ -7,11 +7,12 @@ import com.google.gson.internal.$Gson$Types;
 import com.google.gson.reflect.TypeToken;
 import com.srp.carwash.data.local.db.DbHelper;
 import com.srp.carwash.data.local.prefs.PreferencesHelper;
-import com.srp.carwash.data.model.api.BaseRequest;
+import com.srp.carwash.data.model.api.CheckoutRequest;
 import com.srp.carwash.data.model.api.ContactUsRequest;
+import com.srp.carwash.data.model.api.ExtendSubRequest;
 import com.srp.carwash.data.model.api.IncreaseCreditRequest;
 import com.srp.carwash.data.model.api.LoginRequest;
-import com.srp.carwash.data.model.api.VerifyRequest;
+import com.srp.carwash.data.model.api.RegisterRequest;
 import com.srp.carwash.data.model.db.Option;
 import com.srp.carwash.data.model.db.Question;
 import com.srp.carwash.data.model.db.User;
@@ -20,7 +21,6 @@ import com.srp.carwash.data.remote.ApiHelper;
 import com.srp.carwash.utils.AppConstants;
 import com.srp.carwash.utils.CommonUtils;
 
-import java.io.File;
 import java.lang.reflect.Type;
 import java.util.List;
 
@@ -91,8 +91,8 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Single<String> doVerify(VerifyRequest request) throws Exception {
-        return mApiHelper.doVerify(request);
+    public Single<String> doRegister(RegisterRequest request) throws Exception {
+        return mApiHelper.doRegister(request);
     }
 
     @Override
@@ -106,13 +106,33 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Single<String> doGetVouchers(BaseRequest request) throws Exception {
-        return mApiHelper.doGetVouchers(request);
+    public Single<String> doGetVouchers() throws Exception {
+        return mApiHelper.doGetVouchers();
     }
 
     @Override
-    public Single<String> doUploadAvatar(int uid, File avatar) throws Exception {
-        return mApiHelper.doUploadAvatar(uid, avatar);
+    public Single<String> doGetPackages() throws Exception {
+        return mApiHelper.doGetPackages();
+    }
+
+    @Override
+    public Single<String> doExtendSubscription(ExtendSubRequest request) throws Exception {
+        return mApiHelper.doExtendSubscription(request);
+    }
+
+    @Override
+    public Single<String> doGetUserInfo() throws Exception {
+        return mApiHelper.doGetUserInfo();
+    }
+
+    @Override
+    public Single<String> doGetCheckouts() throws Exception {
+        return mApiHelper.doGetCheckouts();
+    }
+
+    @Override
+    public Single<String> doAddCheckout(CheckoutRequest request) throws Exception {
+        return mApiHelper.doAddCheckout(request);
     }
 
     @Override

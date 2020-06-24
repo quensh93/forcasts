@@ -4,21 +4,20 @@ import com.srp.carwash.ui.base.BaseNavigator;
 
 public interface ProfileFragmentCallback extends BaseNavigator {
 
-    void onEditprofile();
-
-    void onChangeAvatar();
+    void onEditProfile();
 
     void onContactUs();
 
     void onAboutUs();
 
-    void onReports();
+    void onExtend();
 
-    void onCashout();
+    void onCashOut();
 
     void onIncreaseCredit();
 
-    void onLicence();
-
     void onAvatar();
+
+    void onExit();
+
 }

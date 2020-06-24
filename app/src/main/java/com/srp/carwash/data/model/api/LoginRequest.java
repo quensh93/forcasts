@@ -6,10 +6,15 @@ import com.google.gson.annotations.SerializedName;
 public class LoginRequest {
 
     @Expose
-    @SerializedName("mobile")
-    private String mobile;
+    @SerializedName("userName")
+    private String userName;
 
-    public LoginRequest(String mobile) {
-        this.mobile = mobile;
+    @Expose
+    @SerializedName("password")
+    private String password;
+
+    public LoginRequest(String userName, String password) {
+        this.userName = userName;
+        this.password = password;
     }
 }

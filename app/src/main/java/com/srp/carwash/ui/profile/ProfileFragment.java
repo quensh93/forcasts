@@ -2,6 +2,7 @@ package com.srp.carwash.ui.profile;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 
@@ -14,9 +15,10 @@ import com.srp.carwash.R;
 import com.srp.carwash.databinding.FragmentProfileBinding;
 import com.srp.carwash.ui.about.AboutUsFragment;
 import com.srp.carwash.ui.base.BaseFragment;
+import com.srp.carwash.ui.checkout.CheckoutFragment;
 import com.srp.carwash.ui.contact.ContactUsFragment;
 import com.srp.carwash.ui.increase_credit.IncreaseCreditFragment;
-import com.srp.carwash.ui.reports.ReportsFragment;
+import com.srp.carwash.ui.packages.PackagesFragment;
 import com.yalantis.ucrop.UCrop;
 
 import java.io.File;
@@ -78,12 +80,7 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding, Profil
     }
 
     @Override
-    public void onEditprofile() {
-
-    }
-
-    @Override
-    public void onChangeAvatar() {
+    public void onEditProfile() {
 
     }
 
@@ -98,13 +95,13 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding, Profil
     }
 
     @Override
-    public void onReports() {
-        changeFragmentNeedBack(R.id.fl_main, ReportsFragment.newInstance(), ReportsFragment.TAG);
+    public void onExtend() {
+        changeFragmentNeedBack(R.id.fl_main, PackagesFragment.newInstance(), PackagesFragment.TAG);
     }
 
     @Override
-    public void onCashout() {
-
+    public void onCashOut() {
+        changeFragmentNeedBack(R.id.fl_main, CheckoutFragment.newInstance(), CheckoutFragment.TAG);
     }
 
     @Override
@@ -113,8 +110,12 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding, Profil
     }
 
     @Override
-    public void onLicence() {
-
+    public void onExit() {
+        if (Build.VERSION.SDK_INT >= 16 && Build.VERSION.SDK_INT < 21) {
+            getActivity().finishAffinity();
+        } else if (Build.VERSION.SDK_INT >= 21) {
+            getActivity().finishAndRemoveTask();
+        }
     }
 
     @Override
@@ -177,9 +178,19 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding, Profil
         }
     }
 
+    @Override
+    public void onStart() {
+        try {
+            mViewModel.doGetUserInfo();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        super.onStart();
+    }
+
     private void upload(File file) {
         try {
-            mViewModel.doCallLogin(file);
+            mViewModel.doUpload(getContext(), file);
         } catch (Exception e) {
             e.printStackTrace();
         }

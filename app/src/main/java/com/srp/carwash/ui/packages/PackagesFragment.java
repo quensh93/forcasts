@@ -1,24 +1,25 @@
-package com.srp.carwash.ui.checkout;
+package com.srp.carwash.ui.packages;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
 import com.srp.carwash.R;
-import com.srp.carwash.databinding.FragmentCheckoutBinding;
+import com.srp.carwash.databinding.FragmentPackagesBinding;
 import com.srp.carwash.ui.base.BaseFragment;
 
 import javax.inject.Inject;
 
-public class CheckoutFragment extends BaseFragment<FragmentCheckoutBinding, CheckoutFragmentViewModel> implements CheckoutFragmentCallback {
+public class PackagesFragment extends BaseFragment<FragmentPackagesBinding, PackagesFragmentViewModel> implements PackagesFragmentCallback {
 
-    public static final String TAG = CheckoutFragment.class.getSimpleName();
+    public static final String TAG = PackagesFragment.class.getSimpleName();
 
     @Inject
-    CheckoutFragmentViewModel mViewModel;
+    PackagesFragmentViewModel mViewModel;
 
-    public static CheckoutFragment newInstance() {
-        CheckoutFragment fragment = new CheckoutFragment();
+    public static PackagesFragment newInstance() {
+        PackagesFragment fragment = new PackagesFragment();
         Bundle bundle = new Bundle();
         fragment.setArguments(bundle);
         return fragment;
@@ -29,8 +30,10 @@ public class CheckoutFragment extends BaseFragment<FragmentCheckoutBinding, Chec
         super.onCreate(savedInstanceState);
         mViewModel.setNavigator(this);
         try {
-            mViewModel.doGetCheckouts();
+            mViewModel.getPackages();
         } catch (Exception e) {
+
+            Log.e("getPackages", "e : " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -42,11 +45,11 @@ public class CheckoutFragment extends BaseFragment<FragmentCheckoutBinding, Chec
 
     @Override
     public int getLayoutId() {
-        return R.layout.fragment_checkout;
+        return R.layout.fragment_packages;
     }
 
     @Override
-    public CheckoutFragmentViewModel getViewModel() {
+    public PackagesFragmentViewModel getViewModel() {
         return mViewModel;
     }
 
@@ -67,11 +70,12 @@ public class CheckoutFragment extends BaseFragment<FragmentCheckoutBinding, Chec
     }
 
     @Override
-    public void onAddCheckout() {
+    public void onExtend(int pid) {
         try {
-            mViewModel.doAddCheckout();
+            mViewModel.extendSubscription(pid);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
 }

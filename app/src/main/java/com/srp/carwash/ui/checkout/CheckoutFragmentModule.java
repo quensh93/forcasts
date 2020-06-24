@@ -10,7 +10,7 @@ import dagger.Provides;
 public class CheckoutFragmentModule {
 
     @Provides
-    CheckoutFragmentViewModel provideIncreaseCreditViewModel(DataManager dataManager, SchedulerProvider schedulerProvider) {
+    CheckoutFragmentViewModel provideCashOutViewModel(DataManager dataManager, SchedulerProvider schedulerProvider) {
         return new CheckoutFragmentViewModel(dataManager, schedulerProvider);
     }
 }

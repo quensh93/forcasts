@@ -6,10 +6,6 @@ import com.google.gson.annotations.SerializedName;
 public class ContactUsRequest {
 
     @Expose
-    @SerializedName("uid")
-    private int uid;
-
-    @Expose
     @SerializedName("title")
     private String title;
 
@@ -17,8 +13,7 @@ public class ContactUsRequest {
     @SerializedName("description")
     private String description;
 
-    public ContactUsRequest(int uid, String title, String description) {
-        this.uid = uid;
+    public ContactUsRequest(String title, String description) {
         this.title = title;
         this.description = description;
     }

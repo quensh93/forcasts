@@ -63,10 +63,8 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        forecastAdapter="@{viewModel.forcastsAdapter}"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="@{viewModel.data.size()==0 ? View.GONE : View.VISIBLE}"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     <LinearLayout
@@ -74,8 +72,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:gravity="center"
-        android:orientation="vertical"
-        android:visibility="@{viewModel.data.size()==0 ? View.VISIBLE : View.GONE}">
+        android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -108,7 +105,7 @@
                     android:layout_marginTop="-40dp"
                     android:layout_marginBottom="@dimen/_40sdp"
                     android:gravity="center"
-                    android:text="پیشبینی ای یافت نشد."
+                    android:text="مسابقه ای یافت نشد"
                     android:textColor="@color/light"
                     android:textSize="@dimen/_12sdp" />
 

@@ -28,11 +28,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeFragment
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mViewModel.setNavigator(this);
-        try {
-            mViewModel.getForcasts();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
     }
 
     @Override
@@ -48,12 +44,6 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeFragment
     @Override
     public HomeFragmentViewModel getViewModel() {
         return mViewModel;
-    }
-
-    @Override
-    public void onBack() {
-        if(getActivity() != null)
-            getActivity().onBackPressed();
     }
 
 }

@@ -6,8 +6,6 @@ public interface LoginNavigator extends BaseNavigator {
 
     void onLogin();
 
-    void onVerify(String code);
-
     void onRegister();
 
     void openMain();

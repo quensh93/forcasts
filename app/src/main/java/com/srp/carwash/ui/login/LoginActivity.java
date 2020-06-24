@@ -55,31 +55,18 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding, LoginViewM
     }
 
     @Override
-    public void onVerify(String code) {
+    public void onRegister() {
         try {
-            loginViewModel.doCallVerify(code);
+            loginViewModel.doCallRegister();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     @Override
-    public void onRegister() {
-
-    }
-
-    @Override
     public void openMain() {
         startActivity(MainActivity.newIntent(LoginActivity.this));
         finish();
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (loginViewModel.getStepValue() == 0)
-            super.onBackPressed();
-        else
-            loginViewModel.setStepValue(0);
     }
 
     @Override

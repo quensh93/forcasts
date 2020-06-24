@@ -3,21 +3,24 @@ package com.srp.carwash.ui.main;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.fragment.app.Fragment;
+
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.srp.carwash.BR;
 import com.srp.carwash.R;
 import com.srp.carwash.databinding.ActivityMainBinding;
 import com.srp.carwash.ui.base.BaseActivity;
-import com.srp.carwash.ui.contact.ContactUsFragment;
 import com.srp.carwash.ui.home.HomeFragment;
+import com.srp.carwash.ui.investment.InvestmentFragment;
 import com.srp.carwash.ui.profile.ProfileFragment;
 
 import javax.inject.Inject;
-import kotlin.Unit;
+
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.support.HasSupportFragmentInjector;
+import kotlin.Unit;
 
 public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewModel> implements MainNavigator, HasSupportFragmentInjector {
 
@@ -80,7 +83,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
                     changeFragment(R.id.fl_main, HomeFragment.newInstance(), HomeFragment.TAG);
                     break;
                 case 3:
-                    //changeFragment(new Astrology(), "Astrology");
+                    changeFragment(R.id.fl_main, InvestmentFragment.newInstance(), InvestmentFragment.TAG);
                     break;
             }
             return Unit.INSTANCE;

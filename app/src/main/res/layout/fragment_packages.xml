@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.srp.carwash.ui.splash.SplashActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.srp.carwash.ui.packages.PackagesFragmentViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:background="@drawable/ribon"
+            android:gravity="right"
+            android:layoutDirection="ltr"
+            android:onClick="@{()->viewModel.onBackClicked()}"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:layout_marginBottom="@dimen/_2sdp"
+                android:gravity="right|center_vertical"
+                android:paddingRight="@dimen/_5sdp"
+                android:text="اشتراک"
+                android:textSize="@dimen/_13sdp"
+                android:textStyle="bold" />
+
+
+            <ImageView
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="@dimen/_10sdp"
+                android:layout_gravity="center"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_3sdp"
+                app:srcCompat="@drawable/ic_arrow" />
+
+
+        </LinearLayout>
+
+
+        <com.codesgood.views.JustifiedTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_2sdp"
+            android:gravity="right|center_vertical"
+            android:paddingRight="@dimen/_5sdp"
+            android:text="@string/about"
+            android:textSize="@dimen/_12sdp" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            packagesAdapter="@{viewModel.adapter}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="@{viewModel.data.size()==0 ? View.VISIBLE : View.GONE}">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/_40sdp"
+                android:layout_marginRight="@dimen/_40sdp"
+                android:gravity="center"
+                app:cardBackgroundColor="@color/colorPrimaryDark2"
+                app:cardCornerRadius="@dimen/_5sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:layout_width="@dimen/_250sdp"
+                        android:layout_height="@dimen/_200sdp"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/_15sdp"
+                        app:lottie_autoPlay="true"
+                        app:lottie_fileName="empty.json"
+                        app:lottie_loop="true" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="-40dp"
+                        android:layout_marginBottom="@dimen/_40sdp"
+                        android:gravity="center"
+                        android:text="پکیج ای یافت نشد."
+                        android:textColor="@color/light"
+                        android:textSize="@dimen/_12sdp" />
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>
