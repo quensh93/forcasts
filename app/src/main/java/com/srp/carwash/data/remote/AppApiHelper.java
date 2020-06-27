@@ -123,4 +123,37 @@ public class AppApiHelper implements ApiHelper {
                 .build()
                 .getStringSingle();
     }
+
+    @Override
+    public Single<String> doGetCountries() throws Exception {
+        return Rx2AndroidNetworking.get(ApiEndPoint.COUNTRIES)
+                .addHeaders("Authorization", token)
+                .build()
+                .getStringSingle();
+    }
+
+    @Override
+    public Single<String> doGetLeagues() throws Exception {
+        return Rx2AndroidNetworking.get(ApiEndPoint.LEAGUES)
+                .addHeaders("Authorization", token)
+                .build()
+                .getStringSingle();
+    }
+
+    @Override
+    public Single<String> doGetSports() throws Exception {
+        return Rx2AndroidNetworking.get(ApiEndPoint.SPORTS)
+                .addHeaders("Authorization", token)
+                .build()
+                .getStringSingle();
+    }
+
+    @Override
+    public Single<String> doGetMatches() throws Exception {
+        return Rx2AndroidNetworking.get(ApiEndPoint.MATCHES)
+                .addHeaders("Authorization", token)
+                .build()
+                .getStringSingle();
+    }
+
 }

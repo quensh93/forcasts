@@ -136,6 +136,26 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
+    public Single<String> doGetCountries() throws Exception {
+        return mApiHelper.doGetCountries();
+    }
+
+    @Override
+    public Single<String> doGetLeagues() throws Exception {
+        return mApiHelper.doGetLeagues();
+    }
+
+    @Override
+    public Single<String> doGetSports() throws Exception {
+        return mApiHelper.doGetSports();
+    }
+
+    @Override
+    public Single<String> doGetMatches() throws Exception {
+        return mApiHelper.doGetMatches();
+    }
+
+    @Override
     public String getCurrentUserEmail() {
         return mPreferencesHelper.getCurrentUserEmail();
     }
