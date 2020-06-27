@@ -16,6 +16,11 @@ public final class ApiEndPoint {
     public static final String CHECKOUTS = BuildConfig.BASE_URL + "checkouts";
     public static final String ADD_CHECKOUT = BuildConfig.BASE_URL + "addCheckout";
 
+    public static final String COUNTRIES = BuildConfig.BASE_URL + "countries";
+    public static final String LEAGUES = BuildConfig.BASE_URL + "leagues";
+    public static final String SPORTS = BuildConfig.BASE_URL + "sports";
+    public static final String MATCHES = BuildConfig.BASE_URL + "matches";
+
     public static final String LOAD_AVATAR = BuildConfig.BASE_URL + "uploads/";
     public static final String UPLOAD_AVATAR = BuildConfig.BASE_URL + "uploadFile";
 

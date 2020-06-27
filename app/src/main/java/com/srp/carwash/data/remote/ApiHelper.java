@@ -35,4 +35,12 @@ public interface ApiHelper {
 
     Single<String> doAddCheckout(CheckoutRequest request) throws Exception;
 
+    Single<String> doGetCountries() throws Exception;
+
+    Single<String> doGetLeagues() throws Exception;
+
+    Single<String> doGetSports() throws Exception;
+
+    Single<String> doGetMatches() throws Exception;
+
 }
