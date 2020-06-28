@@ -28,7 +28,11 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeFragment
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mViewModel.setNavigator(this);
-
+        try {
+            mViewModel.getMatches();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
