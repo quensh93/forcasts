@@ -23,9 +23,11 @@ import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.mikhaellopez.circularimageview.CircularImageView;
+import com.srp.carwash.BuildConfig;
 import com.srp.carwash.R;
 import com.srp.carwash.data.remote.ApiEndPoint;
 import com.srp.carwash.ui.checkout.CheckoutsAdapter;
+import com.srp.carwash.ui.home.MatchesAdapter;
 import com.srp.carwash.ui.increase_credit.VouchersAdapter;
 import com.srp.carwash.ui.packages.PackagesAdapter;
 
@@ -39,15 +41,17 @@ public final class BindingUtils {
         // This class is not publicly instantiable
     }
 
-
-
     @BindingAdapter("imageUrl")
     public static void setImageUrl(ImageView imageView, String url) {
+        Log.e("setImageUrl", "imageUrl : " + BuildConfig.BASE_URL + "uploads/" + url);
         Context context = imageView.getContext();
-        Glide.with(context).load(url).into(imageView);
+        Glide.with(context).load(BuildConfig.BASE_URL + "uploads/" + url).into(imageView);
     }
 
-
+    @BindingAdapter("matchesAdapter")
+    public static void setMatchesAdapter(RecyclerView view, MatchesAdapter adapter) {
+        view.setAdapter(adapter);
+    }
 
     @BindingAdapter("openEmail")
     public static void setOpenEmail(View view, boolean isEnable) {
