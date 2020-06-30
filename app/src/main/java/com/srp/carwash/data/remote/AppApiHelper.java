@@ -33,8 +33,8 @@ public class AppApiHelper implements ApiHelper {
     }
 
     @Override
-    public Single<String> doGetForecasts() throws Exception {
-        return Rx2AndroidNetworking.get(ApiEndPoint.FORECASTS)
+    public Single<String> doGetForecasts(String matchId) throws Exception {
+        return Rx2AndroidNetworking.get(ApiEndPoint.FORECASTS + "/" + matchId)
                 .addHeaders("Authorization", token)
                 .build()
                 .getStringSingle();
@@ -149,9 +149,10 @@ public class AppApiHelper implements ApiHelper {
     }
 
     @Override
-    public Single<String> doGetMatches() throws Exception {
+    public Single<String> doGetMatches(String date) throws Exception {
         return Rx2AndroidNetworking.get(ApiEndPoint.MATCHES)
                 .addHeaders("Authorization", token)
+                .addQueryParameter("date", date)
                 .build()
                 .getStringSingle();
     }

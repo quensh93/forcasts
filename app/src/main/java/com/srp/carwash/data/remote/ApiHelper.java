@@ -13,7 +13,7 @@ public interface ApiHelper {
 
     ApiHeader getApiHeader();
 
-    Single<String> doGetForecasts() throws Exception;
+    Single<String> doGetForecasts(String matchId) throws Exception;
 
     Single<String> doLogin(LoginRequest request) throws Exception;
 
@@ -41,6 +41,6 @@ public interface ApiHelper {
 
     Single<String> doGetSports() throws Exception;
 
-    Single<String> doGetMatches() throws Exception;
+    Single<String> doGetMatches(String date) throws Exception;
 
 }

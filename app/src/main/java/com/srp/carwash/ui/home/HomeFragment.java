@@ -5,8 +5,10 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 
 import com.srp.carwash.R;
+import com.srp.carwash.data.model.api.MatchesModel;
 import com.srp.carwash.databinding.FragmentHomeBinding;
 import com.srp.carwash.ui.base.BaseFragment;
+import com.srp.carwash.ui.match_detail.MatchDetailFragment;
 
 import javax.inject.Inject;
 
@@ -29,7 +31,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeFragment
         super.onCreate(savedInstanceState);
         mViewModel.setNavigator(this);
         try {
-            mViewModel.getMatches();
+            mViewModel.getMatches("2020-06-30");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -50,4 +52,17 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeFragment
         return mViewModel;
     }
 
+    @Override
+    public void onDateChange(String date) {
+        try {
+            mViewModel.getMatches(date);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onMatch(MatchesModel matchesModel) {
+        changeFragmentNeedBack(R.id.fl_main, MatchDetailFragment.newInstance(matchesModel), MatchDetailFragment.TAG);
+    }
 }

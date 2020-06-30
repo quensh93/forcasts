@@ -81,8 +81,8 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Single<String> doGetForecasts() throws Exception {
-        return mApiHelper.doGetForecasts();
+    public Single<String> doGetForecasts(String matchId) throws Exception {
+        return mApiHelper.doGetForecasts(matchId);
     }
 
     @Override
@@ -151,8 +151,8 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Single<String> doGetMatches() throws Exception {
-        return mApiHelper.doGetMatches();
+    public Single<String> doGetMatches(String date) throws Exception {
+        return mApiHelper.doGetMatches(date);
     }
 
     @Override

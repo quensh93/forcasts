@@ -27,9 +27,14 @@ import com.srp.carwash.BuildConfig;
 import com.srp.carwash.R;
 import com.srp.carwash.data.remote.ApiEndPoint;
 import com.srp.carwash.ui.checkout.CheckoutsAdapter;
+import com.srp.carwash.ui.forecasts.ForecastsAdapter;
+import com.srp.carwash.ui.home.DatePickerAdapter;
 import com.srp.carwash.ui.home.MatchesAdapter;
 import com.srp.carwash.ui.increase_credit.VouchersAdapter;
 import com.srp.carwash.ui.packages.PackagesAdapter;
+import com.yarolegovich.discretescrollview.DiscreteScrollView;
+import com.yarolegovich.discretescrollview.transform.Pivot;
+import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
 
 import java.text.NumberFormat;
 import java.util.Calendar;
@@ -43,7 +48,6 @@ public final class BindingUtils {
 
     @BindingAdapter("imageUrl")
     public static void setImageUrl(ImageView imageView, String url) {
-        Log.e("setImageUrl", "imageUrl : " + BuildConfig.BASE_URL + "uploads/" + url);
         Context context = imageView.getContext();
         Glide.with(context).load(BuildConfig.BASE_URL + "uploads/" + url).into(imageView);
     }
@@ -51,6 +55,26 @@ public final class BindingUtils {
     @BindingAdapter("matchesAdapter")
     public static void setMatchesAdapter(RecyclerView view, MatchesAdapter adapter) {
         view.setAdapter(adapter);
+    }
+
+    @BindingAdapter("forecastsAdapter")
+    public static void setForecastsAdapter(RecyclerView view, ForecastsAdapter adapter) {
+        view.setAdapter(adapter);
+    }
+
+    @BindingAdapter("dateAdapter")
+    public static void setDateAdapter(DiscreteScrollView view, DatePickerAdapter adapter) {
+        view.setAdapter(adapter);
+        view.setItemTransformer(new ScaleTransformer.Builder()
+                .setMaxScale(1.05f)
+                .setMinScale(0.8f)
+                .setPivotX(Pivot.X.CENTER)
+                .setPivotY(Pivot.Y.CENTER)
+                .build());
+        view.scrollToPosition(7);
+        view.setOverScrollEnabled(true);
+        // view.setSlideOnFling(true);
+        view.addOnItemChangedListener((viewHolder, i) -> adapter.setCurrentPosition(i));
     }
 
     @BindingAdapter("openEmail")
