@@ -1,26 +1,28 @@
-package com.srp.carwash.ui.forecasts;
+package com.srp.carwash.ui.news.news_detail;
 
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 
+import com.google.gson.Gson;
 import com.srp.carwash.R;
-import com.srp.carwash.databinding.FragmentForecastsBinding;
+import com.srp.carwash.data.model.api.News;
+import com.srp.carwash.databinding.FragmentNewsBinding;
 import com.srp.carwash.ui.base.BaseFragment;
 
 import javax.inject.Inject;
 
-public class ForecastsFragment extends BaseFragment<FragmentForecastsBinding, ForecastsFragmentViewModel> implements ForecastsFragmentCallback {
+public class NewsDetailFragment extends BaseFragment<FragmentNewsBinding, NewsDetailFragmentViewModel> implements NewsDetailFragmentCallback {
 
-    public static final String TAG = ForecastsFragment.class.getSimpleName();
+    public static final String TAG = NewsDetailFragment.class.getSimpleName();
 
     @Inject
-    ForecastsFragmentViewModel mViewModel;
+    NewsDetailFragmentViewModel mViewModel;
 
-    public static ForecastsFragment newInstance(String matchId) {
-        ForecastsFragment fragment = new ForecastsFragment();
+    public static NewsDetailFragment newInstance(News news) {
+        NewsDetailFragment fragment = new NewsDetailFragment();
         Bundle bundle = new Bundle();
-        bundle.putString("matchId", matchId);
+        bundle.putString("news", new Gson().toJson(news));
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -29,8 +31,9 @@ public class ForecastsFragment extends BaseFragment<FragmentForecastsBinding, Fo
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mViewModel.setNavigator(this);
+        mViewModel.setNews(new Gson().fromJson(getArguments().getString("news"), News.class));
         try {
-            mViewModel.getForecasts(getArguments().getString("matchId"));
+            mViewModel.updateView();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -43,26 +46,26 @@ public class ForecastsFragment extends BaseFragment<FragmentForecastsBinding, Fo
 
     @Override
     public int getLayoutId() {
-        return R.layout.fragment_forecasts;
+        return R.layout.fragment_news_detail;
     }
 
     @Override
-    public ForecastsFragmentViewModel getViewModel() {
+    public NewsDetailFragmentViewModel getViewModel() {
         return mViewModel;
     }
 
     @Override
     public void showMessage(String message) {
-        showMessageToast(message);
+
     }
 
     @Override
     public void showMessage(int message) {
-        showMessageToast(message);
+
     }
 
     @Override
     public void onBack() {
-
+        getActivity().onBackPressed();
     }
 }

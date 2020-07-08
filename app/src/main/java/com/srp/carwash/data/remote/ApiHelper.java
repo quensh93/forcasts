@@ -6,6 +6,8 @@ import com.srp.carwash.data.model.api.ExtendSubRequest;
 import com.srp.carwash.data.model.api.IncreaseCreditRequest;
 import com.srp.carwash.data.model.api.LoginRequest;
 import com.srp.carwash.data.model.api.RegisterRequest;
+import com.srp.carwash.data.model.api.UpdateViewRequest;
+import com.srp.carwash.data.model.api.VoteRequest;
 
 import io.reactivex.Single;
 
@@ -42,5 +44,13 @@ public interface ApiHelper {
     Single<String> doGetSports() throws Exception;
 
     Single<String> doGetMatches(String date) throws Exception;
+
+    Single<String> doGetNews(String matchId) throws Exception;
+
+    Single<String> doUpdateNewsView(UpdateViewRequest newsId) throws Exception;
+
+    Single<String> doVote(VoteRequest request) throws Exception;
+
+    Single<String> doGetStatistics(String date) throws Exception;
 
 }

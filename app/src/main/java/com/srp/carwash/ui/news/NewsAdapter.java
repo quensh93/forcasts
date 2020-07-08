@@ -1,4 +1,4 @@
-package com.srp.carwash.ui.forecasts;
+package com.srp.carwash.ui.news;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -8,26 +8,26 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.srp.carwash.R;
-import com.srp.carwash.data.model.api.ForecastModel;
-import com.srp.carwash.databinding.ListItemForecastsBinding;
+import com.srp.carwash.data.model.api.News;
+import com.srp.carwash.databinding.ListItemNewsBinding;
 
 import java.util.ArrayList;
 
-public class ForecastsAdapter extends RecyclerView.Adapter<ForecastsAdapter.ViewHolder> {
+public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
-    private ArrayList<ForecastModel> data;
-    private OnForecastsListener listener;
+    private ArrayList<News> data;
+    private OnNews onNews;
 
-    public ForecastsAdapter(ArrayList<ForecastModel> data, OnForecastsListener listener) {
+    public NewsAdapter(ArrayList<News> data, OnNews onNews) {
         this.data = data;
-        this.listener = listener;
+        this.onNews = onNews;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ListItemForecastsBinding binding = DataBindingUtil.inflate(
+        ListItemNewsBinding binding = DataBindingUtil.inflate(
                 LayoutInflater.from(parent.getContext()),
-                R.layout.list_item_forecasts, parent, false);
+                R.layout.list_item_news, parent, false);
         return new ViewHolder(binding);
     }
 
@@ -42,23 +42,19 @@ public class ForecastsAdapter extends RecyclerView.Adapter<ForecastsAdapter.View
         return data.size();
     }
 
-    public void notifyData(ArrayList<ForecastModel> data) {
+    public void notifyData(ArrayList<News> data) {
         this.data = data;
         notifyDataSetChanged();
     }
 
-    public void onAgree(int pid) {
-        listener.onAgree(pid);
-    }
-
-    public void onDisagree(int pid) {
-        listener.onDisagree(pid);
+    public void OnItemClick(News news) {
+        onNews.onNews(news);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public ListItemForecastsBinding binding;
+        public ListItemNewsBinding binding;
 
-        public ViewHolder(ListItemForecastsBinding listItemCardsMeBinding) {
+        public ViewHolder(ListItemNewsBinding listItemCardsMeBinding) {
             super(listItemCardsMeBinding.getRoot());
             binding = listItemCardsMeBinding;
         }

@@ -36,7 +36,7 @@ public class MatchDetailFragmentViewModel extends BaseViewModel<MatchDetailFragm
                 getNavigator().onForecasts();
                 break;
             case 2:
-                getNavigator().onNews();
+                getNavigator().onNews(match.get().getId());
                 break;
             case 3:
                 getNavigator().onComposition();

@@ -22,6 +22,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+import com.lukelorusso.verticalseekbar.VerticalSeekBar;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.srp.carwash.BuildConfig;
 import com.srp.carwash.R;
@@ -31,6 +32,7 @@ import com.srp.carwash.ui.forecasts.ForecastsAdapter;
 import com.srp.carwash.ui.home.DatePickerAdapter;
 import com.srp.carwash.ui.home.MatchesAdapter;
 import com.srp.carwash.ui.increase_credit.VouchersAdapter;
+import com.srp.carwash.ui.news.NewsAdapter;
 import com.srp.carwash.ui.packages.PackagesAdapter;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
 import com.yarolegovich.discretescrollview.transform.Pivot;
@@ -60,6 +62,17 @@ public final class BindingUtils {
     @BindingAdapter("forecastsAdapter")
     public static void setForecastsAdapter(RecyclerView view, ForecastsAdapter adapter) {
         view.setAdapter(adapter);
+    }
+
+    @BindingAdapter("newsAdapter")
+    public static void setNewsAdapter(RecyclerView view, NewsAdapter adapter) {
+        view.setAdapter(adapter);
+    }
+
+
+    @BindingAdapter("percent")
+    public static void setPercent(VerticalSeekBar view, int value) {
+        view.setProgress(value);
     }
 
     @BindingAdapter("dateAdapter")

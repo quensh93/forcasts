@@ -66,8 +66,8 @@ public class MatchDetailFragment extends BaseFragment<FragmentAboutUsBinding, Ma
     }
 
     @Override
-    public void onNews() {
-        changeFragment(R.id.fl_match, NewsFragment.newInstance(), NewsFragment.TAG);
+    public void onNews(int matchId) {
+        changeFragment(R.id.fl_match, NewsFragment.newInstance(matchId), NewsFragment.TAG);
     }
 
     @Override

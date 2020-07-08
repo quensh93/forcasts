@@ -40,6 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/ribon"
+                android:padding="@dimen/_10sdp"
                 android:orientation="horizontal"
                 android:layout_gravity="right"
                 android:gravity="right"
@@ -65,6 +66,259 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:dsv_orientation="horizontal" />
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_7sdp"
+        android:layout_marginRight="@dimen/_15sdp"
+        android:layout_marginBottom="@dimen/_7sdp"
+        app:cardBackgroundColor="@color/colorPrimaryDark2"
+        app:cardCornerRadius="@dimen/_5sdp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layoutDirection="ltr"
+            android:orientation="horizontal"
+            android:padding="@dimen/_10sdp"
+            android:visibility="@{viewModel.statisticsModel==null ? View.GONE : View.VISIBLE}">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/_7sdp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="100"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_8ssp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="50"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_8ssp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_8ssp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_7sdp"
+                android:layout_marginRight="@dimen/_7sdp"
+                android:orientation="vertical">
+
+                <com.lukelorusso.verticalseekbar.VerticalSeekBar
+                    percent="@{viewModel.statisticsModel.pendPercent}"
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="@dimen/_60sdp"
+                    android:layout_gravity="center"
+                    app:vsb_bar_background="@color/light"
+                    app:vsb_bar_corner_radius="5dp"
+                    app:vsb_bar_progress="@color/colorAccent"
+                    app:vsb_bar_width="8dp"
+                    app:vsb_click_to_set_progress="false"
+                    app:vsb_max_placeholder_position="inside"
+                    app:vsb_max_value="100"
+                    app:vsb_min_placeholder_position="inside"
+                    app:vsb_show_thumb="false"
+                    app:vsb_use_thumb_to_set_progress="false" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="در انتظار"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_7ssp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_7sdp"
+                android:layout_marginRight="@dimen/_7sdp"
+                android:orientation="vertical">
+
+                <com.lukelorusso.verticalseekbar.VerticalSeekBar
+                    percent="@{viewModel.statisticsModel.winPercent}"
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="@dimen/_60sdp"
+                    android:layout_gravity="center"
+                    app:vsb_bar_background="@color/light"
+                    app:vsb_bar_corner_radius="5dp"
+                    app:vsb_bar_progress="@color/colorAccent"
+                    app:vsb_bar_width="8dp"
+                    app:vsb_click_to_set_progress="false"
+                    app:vsb_max_placeholder_position="inside"
+                    app:vsb_max_value="100"
+                    app:vsb_min_placeholder_position="inside"
+                    app:vsb_show_thumb="false"
+                    app:vsb_use_thumb_to_set_progress="false" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="برد"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_7ssp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_7sdp"
+                android:layout_marginRight="@dimen/_7sdp"
+                android:orientation="vertical">
+
+                <com.lukelorusso.verticalseekbar.VerticalSeekBar
+                    percent="@{viewModel.statisticsModel.loosePercent}"
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="@dimen/_60sdp"
+                    android:layout_gravity="center"
+                    app:vsb_bar_background="@color/light"
+                    app:vsb_bar_corner_radius="5dp"
+                    app:vsb_bar_progress="@color/colorAccent"
+                    app:vsb_bar_width="8dp"
+                    app:vsb_click_to_set_progress="false"
+                    app:vsb_max_placeholder_position="inside"
+                    app:vsb_max_value="100"
+                    app:vsb_min_placeholder_position="inside"
+                    app:vsb_show_thumb="false"
+                    app:vsb_use_thumb_to_set_progress="false" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="باخت"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_7ssp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_7sdp"
+                android:layout_marginRight="@dimen/_7sdp"
+                android:orientation="vertical">
+
+                <com.lukelorusso.verticalseekbar.VerticalSeekBar
+                    percent="@{viewModel.statisticsModel.revocPercent}"
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="@dimen/_60sdp"
+                    android:layout_gravity="center"
+                    app:vsb_bar_background="@color/light"
+                    app:vsb_bar_corner_radius="5dp"
+                    app:vsb_bar_progress="@color/colorAccent"
+                    app:vsb_bar_width="8dp"
+                    app:vsb_click_to_set_progress="false"
+                    app:vsb_max_placeholder_position="inside"
+                    app:vsb_max_value="100"
+                    app:vsb_min_placeholder_position="inside"
+                    app:vsb_show_thumb="false"
+                    app:vsb_use_thumb_to_set_progress="false" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="فسخ"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_7ssp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/_7sdp"
+                android:layout_marginRight="@dimen/_7sdp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:gravity="right"
+                    android:padding="@dimen/_3sdp"
+                    android:text='@{"برد : " + viewModel.statisticsModel.win}'
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_9ssp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:gravity="right"
+                    android:padding="@dimen/_3sdp"
+                    android:text='@{"باخت :" + viewModel.statisticsModel.loose}'
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_9ssp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:gravity="right"
+                    android:padding="@dimen/_3sdp"
+                    android:text='@{"فسخ : " + viewModel.statisticsModel.revoc}'
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_9ssp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:gravity="right"
+                    android:padding="@dimen/_3sdp"
+                    android:text='@{"انتظار : " + viewModel.statisticsModel.pendPercent}'
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_9ssp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"

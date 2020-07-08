@@ -7,7 +7,9 @@ import com.srp.carwash.data.model.api.ExtendSubRequest;
 import com.srp.carwash.data.model.api.IncreaseCreditRequest;
 import com.srp.carwash.data.model.api.LoginRequest;
 import com.srp.carwash.data.model.api.RegisterRequest;
+import com.srp.carwash.data.model.api.UpdateViewRequest;
 import com.srp.carwash.data.model.api.User;
+import com.srp.carwash.data.model.api.VoteRequest;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -151,6 +153,41 @@ public class AppApiHelper implements ApiHelper {
     @Override
     public Single<String> doGetMatches(String date) throws Exception {
         return Rx2AndroidNetworking.get(ApiEndPoint.MATCHES)
+                .addHeaders("Authorization", token)
+                .addQueryParameter("date", date)
+                .build()
+                .getStringSingle();
+    }
+
+    @Override
+    public Single<String> doGetNews(String matchId) throws Exception {
+        return Rx2AndroidNetworking.get(ApiEndPoint.NEWS + "/" + matchId)
+                .addHeaders("Authorization", token)
+                .build()
+                .getStringSingle();
+    }
+
+    @Override
+    public Single<String> doUpdateNewsView(UpdateViewRequest newsId) throws Exception {
+        return Rx2AndroidNetworking.post(ApiEndPoint.NEWS)
+                .addHeaders("Authorization", token)
+                .addApplicationJsonBody(newsId)
+                .build()
+                .getStringSingle();
+    }
+
+    @Override
+    public Single<String> doVote(VoteRequest request) throws Exception {
+        return Rx2AndroidNetworking.post(ApiEndPoint.VOTE)
+                .addHeaders("Authorization", token)
+                .addApplicationJsonBody(request)
+                .build()
+                .getStringSingle();
+    }
+
+    @Override
+    public Single<String> doGetStatistics(String date) throws Exception {
+        return Rx2AndroidNetworking.get(ApiEndPoint.STATISTICS)
                 .addHeaders("Authorization", token)
                 .addQueryParameter("date", date)
                 .build()

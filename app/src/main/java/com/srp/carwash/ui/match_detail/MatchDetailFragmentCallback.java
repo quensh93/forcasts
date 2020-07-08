@@ -6,7 +6,7 @@ public interface MatchDetailFragmentCallback {
 
     void onForecasts();
 
-    void onNews();
+    void onNews(int matchId);
 
     void onComposition();
 
