@@ -13,6 +13,8 @@ import com.srp.carwash.data.model.api.ExtendSubRequest;
 import com.srp.carwash.data.model.api.IncreaseCreditRequest;
 import com.srp.carwash.data.model.api.LoginRequest;
 import com.srp.carwash.data.model.api.RegisterRequest;
+import com.srp.carwash.data.model.api.UpdateViewRequest;
+import com.srp.carwash.data.model.api.VoteRequest;
 import com.srp.carwash.data.model.db.Option;
 import com.srp.carwash.data.model.db.Question;
 import com.srp.carwash.data.model.db.User;
@@ -153,6 +155,26 @@ public class AppDataManager implements DataManager {
     @Override
     public Single<String> doGetMatches(String date) throws Exception {
         return mApiHelper.doGetMatches(date);
+    }
+
+    @Override
+    public Single<String> doGetNews(String matchId) throws Exception {
+        return mApiHelper.doGetNews(matchId);
+    }
+
+    @Override
+    public Single<String> doUpdateNewsView(UpdateViewRequest request) throws Exception {
+        return mApiHelper.doUpdateNewsView(request);
+    }
+
+    @Override
+    public Single<String> doVote(VoteRequest request) throws Exception {
+        return mApiHelper.doVote(request);
+    }
+
+    @Override
+    public Single<String> doGetStatistics(String date) throws Exception {
+        return mApiHelper.doGetStatistics(date);
     }
 
     @Override

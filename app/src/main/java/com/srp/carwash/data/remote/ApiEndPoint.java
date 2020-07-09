@@ -20,6 +20,9 @@ public final class ApiEndPoint {
     public static final String LEAGUES = BuildConfig.BASE_URL + "leagues";
     public static final String SPORTS = BuildConfig.BASE_URL + "sports";
     public static final String MATCHES = BuildConfig.BASE_URL + "matches";
+    public static final String NEWS = BuildConfig.BASE_URL + "news";
+    public static final String VOTE = BuildConfig.BASE_URL + "vote";
+    public static final String STATISTICS = BuildConfig.BASE_URL + "statistics.php";
 
     public static final String LOAD_AVATAR = BuildConfig.BASE_URL + "uploads/";
     public static final String UPLOAD_AVATAR = BuildConfig.BASE_URL + "uploadFile";

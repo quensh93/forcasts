@@ -69,4 +69,11 @@ public class ForecastModel {
         return offeredPrice;
     }
 
+    public void setAgree(int agree) {
+        this.agree = agree;
+    }
+
+    public void setDisagree(int disagree) {
+        this.disagree = disagree;
+    }
 }
