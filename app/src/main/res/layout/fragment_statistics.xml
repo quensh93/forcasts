@@ -5,7 +5,7 @@
     tools:context="com.srp.carwash.ui.splash.SplashActivity">
 
     <data>
-
+        <import type="android.view.View" />
         <variable
             name="viewModel"
             type="com.srp.carwash.ui.statistics.StatisticsFragmentViewModel" />
@@ -21,9 +21,599 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:gravity="center"
+            android:visibility="@{viewModel.matchStatistics ==null ? View.GONE : View.VISIBLE}"
+            app:cardBackgroundColor="@color/colorPrimaryDark2"
+            app:cardCornerRadius="@dimen/_5sdp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/_10sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layoutDirection="ltr"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@{viewModel.matchStatistics.shotsAwayString}"
+                        android:textSize="@dimen/_9ssp" />
+
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_3sdp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/_7sdp"
+                        android:layout_marginRight="@dimen/_7sdp"
+                        android:layout_weight="5"
+                        android:gravity="center"
+                        android:max="100"
+                        android:progress="@{viewModel.matchStatistics.shotsAway}"
+                        android:progressDrawable="@drawable/progressbar_statistics"
+                        android:rotation="180" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="4"
+                        android:gravity="center"
+                        android:text="شوت"
+                        android:textSize="@dimen/_9ssp" />
+
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_3sdp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/_7sdp"
+                        android:layout_marginRight="@dimen/_7sdp"
+                        android:layout_weight="5"
+                        android:gravity="center"
+                        android:max="100"
+                        android:progress="@{viewModel.matchStatistics.shotsHome}"
+                        android:progressDrawable="@drawable/progressbar_statistics_secondory" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@{viewModel.matchStatistics.shotsHomeString}"
+                        android:textSize="@dimen/_9ssp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layoutDirection="ltr"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@{viewModel.matchStatistics.shotsOnGoalAwayString}"
+                        android:textSize="@dimen/_9ssp" />
+
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_3sdp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/_7sdp"
+                        android:layout_marginRight="@dimen/_7sdp"
+                        android:layout_weight="5"
+                        android:gravity="center"
+                        android:max="100"
+                        android:progress="@{viewModel.matchStatistics.shotsOnGoalAway}"
+                        android:progressDrawable="@drawable/progressbar_statistics"
+                        android:rotation="180" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="4"
+                        android:gravity="center"
+                        android:text="شوت در چارچوب"
+                        android:textSize="@dimen/_8ssp" />
+
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_3sdp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/_7sdp"
+                        android:layout_marginRight="@dimen/_7sdp"
+                        android:layout_weight="5"
+                        android:gravity="center"
+                        android:max="100"
+                        android:progress="@{viewModel.matchStatistics.shotsOnGoalHome}"
+                        android:progressDrawable="@drawable/progressbar_statistics_secondory" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@{viewModel.matchStatistics.shotsOnGoalHomeString}"
+                        android:textSize="@dimen/_9ssp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layoutDirection="ltr"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@{viewModel.matchStatistics.foulsAwayString}"
+                        android:textSize="@dimen/_9ssp" />
+
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_3sdp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:layout_weight="5"
+                        android:gravity="center"
+                        android:max="100"
+                        android:progress="@{viewModel.matchStatistics.foulsAway}"
+                        android:progressDrawable="@drawable/progressbar_statistics"
+                        android:rotation="180" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="4"
+                        android:gravity="center"
+                        android:text="خطا"
+                        android:textSize="@dimen/_9ssp" />
+
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_3sdp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/_7sdp"
+                        android:layout_marginRight="@dimen/_7sdp"
+                        android:layout_weight="5"
+                        android:gravity="center"
+                        android:max="100"
+                        android:progress="@{viewModel.matchStatistics.foulsHome}"
+                        android:progressDrawable="@drawable/progressbar_statistics_secondory" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@{viewModel.matchStatistics.foulsHomeString}"
+                        android:textSize="@dimen/_9ssp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layoutDirection="ltr"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@{viewModel.matchStatistics.cornerAwayString}"
+                        android:textSize="@dimen/_9ssp" />
+
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_3sdp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/_7sdp"
+                        android:layout_marginRight="@dimen/_7sdp"
+                        android:layout_weight="5"
+                        android:gravity="center"
+                        android:max="100"
+                        android:progress="@{viewModel.matchStatistics.cornerAway}"
+                        android:progressDrawable="@drawable/progressbar_statistics"
+                        android:rotation="180" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="4"
+                        android:gravity="center"
+                        android:text="کرنر"
+                        android:textSize="@dimen/_9ssp" />
+
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_3sdp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/_7sdp"
+                        android:layout_marginRight="@dimen/_7sdp"
+                        android:layout_weight="5"
+                        android:gravity="center"
+                        android:max="100"
+                        android:progress="@{viewModel.matchStatistics.cornerHome}"
+                        android:progressDrawable="@drawable/progressbar_statistics_secondory" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@{viewModel.matchStatistics.cornerHomeString}"
+                        android:textSize="@dimen/_9ssp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layoutDirection="ltr"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@{viewModel.matchStatistics.offsidesAwayString}"
+                        android:textSize="@dimen/_9ssp" />
+
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_3sdp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/_7sdp"
+                        android:layout_marginRight="@dimen/_7sdp"
+                        android:layout_weight="5"
+                        android:gravity="center"
+                        android:max="100"
+                        android:progress="@{viewModel.matchStatistics.offsidesAway}"
+                        android:progressDrawable="@drawable/progressbar_statistics"
+                        android:rotation="180" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="4"
+                        android:gravity="center"
+                        android:text="آفساید"
+                        android:textSize="@dimen/_9ssp" />
+
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_3sdp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/_7sdp"
+                        android:layout_marginRight="@dimen/_7sdp"
+                        android:layout_weight="5"
+                        android:gravity="center"
+                        android:max="100"
+                        android:progress="@{viewModel.matchStatistics.offsidesHome}"
+                        android:progressDrawable="@drawable/progressbar_statistics_secondory" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@{viewModel.matchStatistics.offsidesHomeString}"
+                        android:textSize="@dimen/_9ssp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layoutDirection="ltr"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@{viewModel.matchStatistics.yellowCardsAwayString}"
+                        android:textSize="@dimen/_9ssp" />
+
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_3sdp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/_7sdp"
+                        android:layout_marginRight="@dimen/_7sdp"
+                        android:layout_weight="5"
+                        android:gravity="center"
+                        android:max="100"
+                        android:progress="@{viewModel.matchStatistics.yellowCardsAway}"
+                        android:progressDrawable="@drawable/progressbar_statistics"
+                        android:rotation="180" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="4"
+                        android:gravity="center"
+                        android:text="کارت زرد"
+                        android:textSize="@dimen/_9ssp" />
+
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_3sdp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/_7sdp"
+                        android:layout_marginRight="@dimen/_7sdp"
+                        android:layout_weight="5"
+                        android:gravity="center"
+                        android:max="100"
+                        android:progress="@{viewModel.matchStatistics.yellowCardsHome}"
+                        android:progressDrawable="@drawable/progressbar_statistics_secondory" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@{viewModel.matchStatistics.yellowCardsHomeString}"
+                        android:textSize="@dimen/_9ssp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layoutDirection="ltr"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@{viewModel.matchStatistics.redCardsAwayString}"
+                        android:textSize="@dimen/_9ssp" />
+
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_3sdp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/_7sdp"
+                        android:layout_marginRight="@dimen/_7sdp"
+                        android:layout_weight="5"
+                        android:gravity="center"
+                        android:max="100"
+                        android:progress="@{viewModel.matchStatistics.redCardsAway}"
+                        android:progressDrawable="@drawable/progressbar_statistics"
+                        android:rotation="180" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="4"
+                        android:gravity="center"
+                        android:text="کارت قرمز"
+                        android:textSize="@dimen/_9ssp" />
+
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_3sdp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/_7sdp"
+                        android:layout_marginRight="@dimen/_7sdp"
+                        android:layout_weight="5"
+                        android:gravity="center"
+                        android:max="100"
+                        android:progress="@{viewModel.matchStatistics.redCardsHome}"
+                        android:progressDrawable="@drawable/progressbar_statistics_secondory" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@{viewModel.matchStatistics.redCardsHomeString}"
+                        android:textSize="@dimen/_9ssp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layoutDirection="ltr"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@{viewModel.matchStatistics.dangerousAttacksAwayString}"
+                        android:textSize="@dimen/_9ssp" />
+
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_3sdp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/_7sdp"
+                        android:layout_marginRight="@dimen/_7sdp"
+                        android:layout_weight="5"
+                        android:gravity="center"
+                        android:max="100"
+                        android:progress="@{viewModel.matchStatistics.dangerousAttacksAway}"
+                        android:progressDrawable="@drawable/progressbar_statistics"
+                        android:rotation="180" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="4"
+                        android:gravity="center"
+                        android:text="موقعیت خطرناک"
+                        android:textSize="@dimen/_8ssp" />
+
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_3sdp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/_7sdp"
+                        android:layout_marginRight="@dimen/_7sdp"
+                        android:layout_weight="5"
+                        android:gravity="center"
+                        android:max="100"
+                        android:progress="@{viewModel.matchStatistics.dangerousAttacksHome}"
+                        android:progressDrawable="@drawable/progressbar_statistics_secondory" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@{viewModel.matchStatistics.dangerousAttacksHomeString}"
+                        android:textSize="@dimen/_9ssp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layoutDirection="ltr"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@{viewModel.matchStatistics.possessionAwayString}"
+                        android:textSize="@dimen/_9ssp" />
+
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_3sdp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/_7sdp"
+                        android:layout_marginRight="@dimen/_7sdp"
+                        android:layout_weight="5"
+                        android:gravity="center"
+                        android:max="100"
+                        android:progress="@{viewModel.matchStatistics.possessionAway}"
+                        android:progressDrawable="@drawable/progressbar_statistics"
+                        android:rotation="180" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="4"
+                        android:gravity="center"
+                        android:text="مالکیت توپ"
+                        android:textSize="@dimen/_9ssp" />
+
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_3sdp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/_7sdp"
+                        android:layout_marginRight="@dimen/_7sdp"
+                        android:layout_weight="5"
+                        android:gravity="center"
+                        android:max="100"
+                        android:progress="@{viewModel.matchStatistics.possessionHome}"
+                        android:progressDrawable="@drawable/progressbar_statistics_secondory" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@{viewModel.matchStatistics.possessionHomeString}"
+                        android:textSize="@dimen/_9ssp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginLeft="@dimen/_40sdp"
             android:layout_marginRight="@dimen/_40sdp"
             android:gravity="center"
+            android:visibility="@{viewModel.matchStatistics ==null ? View.VISIBLE : View.GONE}"
             app:cardBackgroundColor="@color/colorPrimaryDark2"
             app:cardCornerRadius="@dimen/_5sdp">
 
@@ -48,7 +638,7 @@
                     android:layout_marginTop="-40dp"
                     android:layout_marginBottom="@dimen/_40sdp"
                     android:gravity="center"
-                    android:text="این امکان به زودی به برنامه افزوده خواهد شد."
+                    android:text="آمار بازی هنوز ثبت نشده است."
                     android:textColor="@color/light"
                     android:textSize="@dimen/_12sdp" />
 
@@ -56,7 +646,6 @@
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
-
 
     </LinearLayout>
 </layout>

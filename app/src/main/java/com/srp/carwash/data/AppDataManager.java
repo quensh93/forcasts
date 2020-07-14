@@ -178,6 +178,16 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
+    public Single<String> doGetComposition(String matchId) throws Exception {
+        return mApiHelper.doGetComposition(matchId);
+    }
+
+    @Override
+    public Single<String> doGetMatchStatistics(String matchId) throws Exception {
+        return mApiHelper.doGetMatchStatistics(matchId);
+    }
+
+    @Override
     public String getCurrentUserEmail() {
         return mPreferencesHelper.getCurrentUserEmail();
     }

@@ -15,6 +15,8 @@ import com.srp.carwash.ui.main.MainActivity;
 
 import javax.inject.Inject;
 
+import static com.srp.carwash.MvvmApp.token;
+
 public class SplashActivity extends BaseActivity<ActivitySplashBinding, SplashViewModel> implements SplashNavigator {
 
     @Inject
@@ -43,8 +45,10 @@ public class SplashActivity extends BaseActivity<ActivitySplashBinding, SplashVi
     private void decideNext() {
         if (User.count(User.class) == 0)
             startActivity(LoginActivity.newIntent(SplashActivity.this));
-        else
+        else {
+            token = User.find(User.class, null, null).get(0).getToken();
             startActivity(MainActivity.newIntent(SplashActivity.this));
+        }
         finish();
     }
 

@@ -90,14 +90,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="@dimen/_7sdp">
+                android:paddingLeft="@dimen/_7sdp"
+                android:paddingRight="@dimen/_7sdp"
+                android:paddingBottom="@dimen/_7sdp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:layout_gravity="center"
+                    android:layout_gravity="center_horizontal|top"
                     android:layout_weight="1"
-                    android:gravity="center"
+                    android:gravity="center_horizontal|top"
                     android:text="100"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_8ssp" />
@@ -115,9 +117,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:layout_gravity="center"
+                    android:layout_gravity="center_horizontal|bottom"
                     android:layout_weight="1"
-                    android:gravity="center"
+                    android:gravity="center_horizontal|bottom"
                     android:text="0"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_8ssp" />
@@ -126,7 +128,7 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/_7sdp"
                 android:layout_marginRight="@dimen/_7sdp"
                 android:orientation="vertical">
@@ -134,7 +136,7 @@
                 <com.lukelorusso.verticalseekbar.VerticalSeekBar
                     percent="@{viewModel.statisticsModel.pendPercent}"
                     android:layout_width="@dimen/_10sdp"
-                    android:layout_height="@dimen/_60sdp"
+                    android:layout_height="@dimen/_70sdp"
                     android:layout_gravity="center"
                     app:vsb_bar_background="@color/light"
                     app:vsb_bar_corner_radius="5dp"
@@ -169,7 +171,7 @@
                 <com.lukelorusso.verticalseekbar.VerticalSeekBar
                     percent="@{viewModel.statisticsModel.winPercent}"
                     android:layout_width="@dimen/_10sdp"
-                    android:layout_height="@dimen/_60sdp"
+                    android:layout_height="@dimen/_70sdp"
                     android:layout_gravity="center"
                     app:vsb_bar_background="@color/light"
                     app:vsb_bar_corner_radius="5dp"
@@ -204,7 +206,7 @@
                 <com.lukelorusso.verticalseekbar.VerticalSeekBar
                     percent="@{viewModel.statisticsModel.loosePercent}"
                     android:layout_width="@dimen/_10sdp"
-                    android:layout_height="@dimen/_60sdp"
+                    android:layout_height="@dimen/_70sdp"
                     android:layout_gravity="center"
                     app:vsb_bar_background="@color/light"
                     app:vsb_bar_corner_radius="5dp"
@@ -239,7 +241,7 @@
                 <com.lukelorusso.verticalseekbar.VerticalSeekBar
                     percent="@{viewModel.statisticsModel.revocPercent}"
                     android:layout_width="@dimen/_10sdp"
-                    android:layout_height="@dimen/_60sdp"
+                    android:layout_height="@dimen/_70sdp"
                     android:layout_gravity="center"
                     app:vsb_bar_background="@color/light"
                     app:vsb_bar_corner_radius="5dp"
@@ -273,42 +275,92 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:gravity="right"
+                    android:layout_gravity="center"
+                    android:gravity="center"
                     android:padding="@dimen/_3sdp"
-                    android:text='@{"برد : " + viewModel.statisticsModel.win}'
+                    android:text='@{"" + viewModel.statisticsModel.win}'
                     android:textColor="@color/white"
                     android:textSize="@dimen/_9ssp" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:gravity="right"
+                    android:layout_gravity="center"
+                    android:gravity="center"
                     android:padding="@dimen/_3sdp"
-                    android:text='@{"باخت :" + viewModel.statisticsModel.loose}'
+                    android:text='@{"" + viewModel.statisticsModel.loose}'
                     android:textColor="@color/white"
                     android:textSize="@dimen/_9ssp" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:gravity="right"
+                    android:layout_gravity="center"
+                    android:gravity="center"
                     android:padding="@dimen/_3sdp"
-                    android:text='@{"فسخ : " + viewModel.statisticsModel.revoc}'
+                    android:text='@{"" + viewModel.statisticsModel.revoc}'
                     android:textColor="@color/white"
                     android:textSize="@dimen/_9ssp" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:padding="@dimen/_3sdp"
+                    android:text='@{"" + viewModel.statisticsModel.pend}'
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_9ssp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_7sdp"
+                android:layout_marginRight="@dimen/_7sdp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
                     android:gravity="right"
                     android:padding="@dimen/_3sdp"
-                    android:text='@{"انتظار : " + viewModel.statisticsModel.pendPercent}'
+                    android:text="برد"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_9ssp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:gravity="right"
+                    android:padding="@dimen/_3sdp"
+                    android:text="باخت"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_9ssp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:gravity="right"
+                    android:padding="@dimen/_3sdp"
+                    android:text="فسخ"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_9ssp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:gravity="right"
+                    android:padding="@dimen/_3sdp"
+                    android:text="در انتظار"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_9ssp" />
 

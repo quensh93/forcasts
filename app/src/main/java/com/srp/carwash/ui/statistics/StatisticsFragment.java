@@ -17,9 +17,10 @@ public class StatisticsFragment extends BaseFragment<FragmentStatisticsBinding, 
     @Inject
     StatisticsFragmentViewModel mViewModel;
 
-    public static StatisticsFragment newInstance() {
+    public static StatisticsFragment newInstance(String matchId) {
         StatisticsFragment fragment = new StatisticsFragment();
         Bundle bundle = new Bundle();
+        bundle.putString("matchId", matchId);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -28,6 +29,11 @@ public class StatisticsFragment extends BaseFragment<FragmentStatisticsBinding, 
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mViewModel.setNavigator(this);
+        try {
+            mViewModel.doGetMatchStatistics(getArguments().getString("matchId"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

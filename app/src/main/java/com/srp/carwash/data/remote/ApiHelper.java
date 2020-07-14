@@ -53,4 +53,8 @@ public interface ApiHelper {
 
     Single<String> doGetStatistics(String date) throws Exception;
 
+    Single<String> doGetComposition(String matchId) throws Exception;
+
+    Single<String> doGetMatchStatistics(String matchId) throws Exception;
+
 }

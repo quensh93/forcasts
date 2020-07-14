@@ -1,19 +1,3 @@
-/*
- *  Copyright (C) 2017 MINDORKS NEXTGEN PRIVATE LIMITED
- *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *
- *      https://mindorks.com/license/apache-v2
- *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License
- */
-
 package com.srp.carwash.ui.base;
 
 import android.app.Dialog;
@@ -21,18 +5,15 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.RelativeLayout;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.RelativeLayout;
-
-/**
- * Created by amitshekhar on 10/07/17.
- */
 
 public abstract class BaseDialog extends DialogFragment {
 
@@ -55,7 +36,7 @@ public abstract class BaseDialog extends DialogFragment {
         final RelativeLayout root = new RelativeLayout(getActivity());
         root.setLayoutParams(new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT));
+                ViewGroup.LayoutParams.MATCH_PARENT));
 
         // creating the fullscreen dialog
         final Dialog dialog = new Dialog(getContext());
@@ -65,7 +46,7 @@ public abstract class BaseDialog extends DialogFragment {
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             dialog.getWindow().setLayout(
                     ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT);
+                    ViewGroup.LayoutParams.MATCH_PARENT);
         }
         dialog.setCanceledOnTouchOutside(false);
 

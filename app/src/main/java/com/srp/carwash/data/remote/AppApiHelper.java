@@ -8,7 +8,6 @@ import com.srp.carwash.data.model.api.IncreaseCreditRequest;
 import com.srp.carwash.data.model.api.LoginRequest;
 import com.srp.carwash.data.model.api.RegisterRequest;
 import com.srp.carwash.data.model.api.UpdateViewRequest;
-import com.srp.carwash.data.model.api.User;
 import com.srp.carwash.data.model.api.VoteRequest;
 
 import javax.inject.Inject;
@@ -16,17 +15,16 @@ import javax.inject.Singleton;
 
 import io.reactivex.Single;
 
+import static com.srp.carwash.MvvmApp.token;
+
 @Singleton
 public class AppApiHelper implements ApiHelper {
 
     private ApiHeader mApiHeader;
-    private String token;
 
     @Inject
     public AppApiHelper(ApiHeader apiHeader) {
         mApiHeader = apiHeader;
-        if (User.count(User.class) > 0)
-            token = User.find(User.class, null, null).get(0).getToken();
     }
 
     @Override
@@ -190,6 +188,22 @@ public class AppApiHelper implements ApiHelper {
         return Rx2AndroidNetworking.get(ApiEndPoint.STATISTICS)
                 .addHeaders("Authorization", token)
                 .addQueryParameter("date", date)
+                .build()
+                .getStringSingle();
+    }
+
+    @Override
+    public Single<String> doGetComposition(String matchId) throws Exception {
+        return Rx2AndroidNetworking.get(ApiEndPoint.COMPOSITION + "/" + matchId)
+                .addHeaders("Authorization", token)
+                .build()
+                .getStringSingle();
+    }
+
+    @Override
+    public Single<String> doGetMatchStatistics(String matchId) throws Exception {
+        return Rx2AndroidNetworking.get(ApiEndPoint.MATCH_STATISTICS + "/" + matchId)
+                .addHeaders("Authorization", token)
                 .build()
                 .getStringSingle();
     }

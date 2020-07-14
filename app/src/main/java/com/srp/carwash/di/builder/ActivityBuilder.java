@@ -14,7 +14,7 @@ import com.srp.carwash.ui.main.MainActivity;
 import com.srp.carwash.ui.main.MainActivityModule;
 import com.srp.carwash.ui.match_detail.MatchDetailFragmentProvider;
 import com.srp.carwash.ui.news.NewsFragmentProvider;
-import com.srp.carwash.ui.news.news_detail.NewsDetailFragmentProvider;
+import com.srp.carwash.ui.news.news_detail.NewsDetailDialogProvider;
 import com.srp.carwash.ui.packages.PackagesFragmentProvider;
 import com.srp.carwash.ui.profile.ProfileFragmentProvider;
 import com.srp.carwash.ui.reports.ReportsFragmentProvider;
@@ -45,7 +45,7 @@ public abstract class ActivityBuilder {
             MatchDetailFragmentProvider.class,
             ForecastsFragmentProvider.class,
             NewsFragmentProvider.class,
-            NewsDetailFragmentProvider.class,
+            NewsDetailDialogProvider.class,
             StatisticsFragmentProvider.class,
             CompositionFragmentProvider.class})
     abstract MainActivity bindMainActivity();

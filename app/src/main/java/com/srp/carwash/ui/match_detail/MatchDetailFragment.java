@@ -71,13 +71,13 @@ public class MatchDetailFragment extends BaseFragment<FragmentAboutUsBinding, Ma
     }
 
     @Override
-    public void onComposition() {
-        changeFragment(R.id.fl_match, CompositionFragment.newInstance(), CompositionFragment.TAG);
+    public void onComposition(int matchId) {
+        changeFragment(R.id.fl_match, CompositionFragment.newInstance(matchId), CompositionFragment.TAG);
     }
 
     @Override
-    public void onStatistics() {
-        changeFragment(R.id.fl_match, StatisticsFragment.newInstance(), StatisticsFragment.TAG);
+    public void onStatistics(int matchId) {
+        changeFragment(R.id.fl_match, StatisticsFragment.newInstance("" + matchId), StatisticsFragment.TAG);
     }
 
 }

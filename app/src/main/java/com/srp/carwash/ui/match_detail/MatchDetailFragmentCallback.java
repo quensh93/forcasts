@@ -8,7 +8,7 @@ public interface MatchDetailFragmentCallback {
 
     void onNews(int matchId);
 
-    void onComposition();
+    void onComposition(int matchId);
 
-    void onStatistics();
+    void onStatistics(int matchId);
 }
