@@ -13,6 +13,8 @@ import com.srp.carwash.data.model.api.RegisterRequest;
 import com.srp.carwash.ui.base.BaseViewModel;
 import com.srp.carwash.utils.rx.SchedulerProvider;
 
+import static com.srp.carwash.MvvmApp.token;
+
 public class LoginViewModel extends BaseViewModel<LoginNavigator> {
 
     public ObservableField<String> userName = new ObservableField<>();
@@ -78,6 +80,7 @@ public class LoginViewModel extends BaseViewModel<LoginNavigator> {
                             LoginResponse verifyResponse = new Gson().fromJson(response, LoginResponse.class);
                             if (verifyResponse.isResult()) {
                                 verifyResponse.getUser().save();
+                                token = verifyResponse.getUser().getToken();
                                 getNavigator().openMain();
                             } else
                                 getNavigator().showMessage(R.string.error_login);

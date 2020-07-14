@@ -10,11 +10,11 @@ import com.srp.carwash.data.model.api.UpdateViewRequest;
 import com.srp.carwash.ui.base.BaseViewModel;
 import com.srp.carwash.utils.rx.SchedulerProvider;
 
-public class NewsDetailFragmentViewModel extends BaseViewModel<NewsDetailFragmentCallback> {
+public class NewsDetailDialogViewModel extends BaseViewModel<NewsDetailDialogCallback> {
 
     public ObservableField<News> news = new ObservableField<>();
 
-    public NewsDetailFragmentViewModel(DataManager dataManager, SchedulerProvider schedulerProvider) {
+    public NewsDetailDialogViewModel(DataManager dataManager, SchedulerProvider schedulerProvider) {
         super(dataManager, schedulerProvider);
     }
 
@@ -39,5 +39,4 @@ public class NewsDetailFragmentViewModel extends BaseViewModel<NewsDetailFragmen
                         }
                 ));
     }
-
 }

@@ -10,12 +10,13 @@
 
         <variable
             name="viewModel"
-            type="com.srp.carwash.ui.news.news_detail.NewsDetailFragmentViewModel" />
+            type="com.srp.carwash.ui.news.news_detail.NewsDetailDialogViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark">
 
 
         <LinearLayout

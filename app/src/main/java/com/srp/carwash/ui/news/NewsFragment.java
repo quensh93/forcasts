@@ -8,7 +8,7 @@ import com.srp.carwash.R;
 import com.srp.carwash.data.model.api.News;
 import com.srp.carwash.databinding.FragmentNewsBinding;
 import com.srp.carwash.ui.base.BaseFragment;
-import com.srp.carwash.ui.news.news_detail.NewsDetailFragment;
+import com.srp.carwash.ui.news.news_detail.NewsDetailDialog;
 
 import javax.inject.Inject;
 
@@ -56,6 +56,6 @@ public class NewsFragment extends BaseFragment<FragmentNewsBinding, NewsFragment
 
     @Override
     public void onNewsDetail(News news) {
-        changeFragmentNeedBack(R.id.fl_main, NewsDetailFragment.newInstance(news), NewsDetailFragment.TAG);
+        NewsDetailDialog.newInstance(news).show(getParentFragmentManager(), NewsDetailDialog.TAG);
     }
 }

@@ -30,7 +30,7 @@ public class MatchDetailFragmentViewModel extends BaseViewModel<MatchDetailFragm
         this.state.set(state);
         switch (state) {
             case 0:
-                getNavigator().onStatistics();
+                getNavigator().onStatistics(match.get().getId());
                 break;
             case 1:
                 getNavigator().onForecasts();
@@ -39,7 +39,7 @@ public class MatchDetailFragmentViewModel extends BaseViewModel<MatchDetailFragm
                 getNavigator().onNews(match.get().getId());
                 break;
             case 3:
-                getNavigator().onComposition();
+                getNavigator().onComposition(match.get().getId());
                 break;
         }
     }

@@ -17,9 +17,10 @@ public class CompositionFragment extends BaseFragment<FragmentCompositionBinding
     @Inject
     CompositionFragmentViewModel mViewModel;
 
-    public static CompositionFragment newInstance() {
+    public static CompositionFragment newInstance(int matchId) {
         CompositionFragment fragment = new CompositionFragment();
         Bundle bundle = new Bundle();
+        bundle.putInt("matchId", matchId);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -28,6 +29,11 @@ public class CompositionFragment extends BaseFragment<FragmentCompositionBinding
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mViewModel.setNavigator(this);
+        try {
+            mViewModel.doGetComposition(getArguments().getInt("matchId"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
