@@ -208,4 +208,12 @@ public class AppApiHelper implements ApiHelper {
                 .getStringSingle();
     }
 
+    @Override
+    public Single<String> doCheckVersion() throws Exception {
+        return Rx2AndroidNetworking.get(ApiEndPoint.CHECK_VERSION)
+                .addHeaders("Authorization", token)
+                .build()
+                .getStringSingle();
+    }
+
 }

@@ -75,6 +75,7 @@
         android:layout_marginTop="@dimen/_7sdp"
         android:layout_marginRight="@dimen/_15sdp"
         android:layout_marginBottom="@dimen/_7sdp"
+        android:visibility="@{(viewModel.statisticsModel==null  || viewModel.statisticsModel.total==0)? View.GONE : View.VISIBLE}"
         app:cardBackgroundColor="@color/colorPrimaryDark2"
         app:cardCornerRadius="@dimen/_5sdp">
 
@@ -83,8 +84,7 @@
             android:layout_height="wrap_content"
             android:layoutDirection="ltr"
             android:orientation="horizontal"
-            android:padding="@dimen/_10sdp"
-            android:visibility="@{viewModel.statisticsModel==null ? View.GONE : View.VISIBLE}">
+            android:padding="@dimen/_10sdp">
 
             <LinearLayout
                 android:layout_width="wrap_content"

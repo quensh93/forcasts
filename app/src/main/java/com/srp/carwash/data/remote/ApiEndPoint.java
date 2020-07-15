@@ -25,6 +25,7 @@ public final class ApiEndPoint {
     public static final String STATISTICS = BuildConfig.BASE_URL + "statistics";
     public static final String COMPOSITION = BuildConfig.BASE_URL + "composition";
     public static final String MATCH_STATISTICS = BuildConfig.BASE_URL + "matchStatistics";
+    public static final String CHECK_VERSION = BuildConfig.BASE_URL + "checkVersion";
 
     public static final String LOAD_AVATAR = BuildConfig.BASE_URL + "uploads/";
     public static final String UPLOAD_AVATAR = BuildConfig.BASE_URL + "uploadFile";

@@ -3,7 +3,6 @@ package com.srp.carwash.ui.splash;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 
 import com.srp.carwash.BR;
 import com.srp.carwash.R;
@@ -56,6 +55,10 @@ public class SplashActivity extends BaseActivity<ActivitySplashBinding, SplashVi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mSplashViewModel.setNavigator(this);
-        new Handler().postDelayed(this::decideNext, 3000);
+        try {
+            mSplashViewModel.doCheckVersion();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

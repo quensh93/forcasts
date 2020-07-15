@@ -188,6 +188,11 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
+    public Single<String> doCheckVersion() throws Exception {
+        return mApiHelper.doCheckVersion();
+    }
+
+    @Override
     public String getCurrentUserEmail() {
         return mPreferencesHelper.getCurrentUserEmail();
     }

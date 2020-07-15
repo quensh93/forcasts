@@ -24,6 +24,7 @@ public class MvvmApp extends Application implements HasActivityInjector {
     CalligraphyConfig mCalligraphyConfig;
 
     public static String token;
+    public static String shopUrl;
 
     @Override
     public DispatchingAndroidInjector<Activity> activityInjector() {

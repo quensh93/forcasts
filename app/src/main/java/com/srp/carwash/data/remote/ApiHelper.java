@@ -57,4 +57,6 @@ public interface ApiHelper {
 
     Single<String> doGetMatchStatistics(String matchId) throws Exception;
 
+    Single<String> doCheckVersion() throws Exception;
+
 }
